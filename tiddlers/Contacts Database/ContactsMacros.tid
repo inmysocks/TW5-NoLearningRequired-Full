@@ -1,6 +1,6 @@
 created: 20141109203159734
 creator: inmysocks
-modified: 20141204012848433
+modified: 20141209181040884
 modifier: inmysocks
 no_edit: true
 tags: $:/tags/Macro
@@ -20,9 +20,9 @@ title: ContactsMacros
 
 <$link to="$(tiddlerName)$">Open Contact</$link>
 
-|!Personal Email Address |<<editField1 personal_email_address>> |<<editField2 personal_email_address>> |
-|!Work Email Address |<<editField1 work_email_address>> |<<editField2 work_email_address>> |
-|!Other Email Address |<<editField1 other_email_address>> |<<editField2 other_email_address>> |
+|!Personal Email Address |<<editEmailField1 personal_email_address>> |<<editField2 personal_email_address>> |
+|!Work Email Address |<<editEmailField1 work_email_address>> |<<editField2 work_email_address>> |
+|!Other Email Address |<<editEmailField1 other_email_address>> |<<editField2 other_email_address>> |
 |!Home Phone Number |<<editField1 home_phone_number>> |<<editField2 home_phone_number>> |
 |!Cell Phone Number |<<editField1 cell_phone_number>> |<<editField2 cell_phone_number>> |
 |!Work Phone Number |<<editField1 work_phone_number>> |<<editField2 work_phone_number>> |
@@ -38,10 +38,28 @@ title: ContactsMacros
 
 \end
 
+\define getAddress()
+mailto:$(address)$
+\end
+
+\define editEmailField1(fieldName)
+
+<$reveal type="nomatch" state="$:/state/$(tiddlerName)$$fieldName$" text="show">
+<$set name=address value={{$(tiddlerName)$!!$fieldName$}}>
+<a href=<<getAddress>> target="_top">{{$(tiddlerName)$!!$fieldName$}}</a>
+</$set>
+</$reveal>
+<$reveal type="match" state="$:/state/$(tiddlerName)$$fieldName$" text="show">
+<$edit-text tiddler="$(tiddlerName)$" field="$fieldName$"/> 
+</$reveal>
+
+\end
+
+
 \define editField1(fieldName)
 
 <$reveal type="nomatch" state="$:/state/$(tiddlerName)$$fieldName$" text="show">
-{{$(tiddlerName)$!!$fieldName$}} 
+{{$(tiddlerName)$!!$fieldName$}}
 </$reveal>
 <$reveal type="match" state="$:/state/$(tiddlerName)$$fieldName$" text="show">
 <$edit-text tiddler="$(tiddlerName)$" field="$fieldName$"/> 
