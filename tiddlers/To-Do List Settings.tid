@@ -1,0 +1,93 @@
+blurb: Settings for the upgraded to-do list
+created: 20141204041129441
+modified: 20141206181617656
+no_edit: true
+tags: [[Wiki Settings]]
+title: To-Do List Settings
+
+!!Unfinished Task Display template to use:
+This is how each individual task will be displayed in the list<br>
+
+<div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
+<$select tiddler='Upgraded To-Do List' field='entry_display_template'>
+<$list filter='[tag[ToDoEntryDisplayTemplate]!has[draft.of]]'>
+<option value={{!!title}}><$view field='display_name'/></option>
+</$list>
+</$select>
+
+<$tiddler tiddler={{Upgraded To-Do List!!entry_display_template}}>
+<$transclude tiddler={{!!settings_tiddler}}/>
+</$tiddler>
+ 
+<br>
+Preview: <br>
+<div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'>
+<$tiddler tiddler={{Upgraded To-Do List!!entry_display_template}}><$transclude/></$tiddler>
+</div>
+</div>
+
+!!Finished Task Display template to use:
+This is the template used to generate the list of tasks, click on the name to see the template (How it looks changes based on the display template selected above).<br>
+<div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
+
+<$select tiddler='Upgraded To-Do List' field='finished_task_list_template'>
+<$list filter='[tag[ToDoEntryDisplayTemplate]!has[draft.of]]'>
+<option value={{!!title}}><$view field=display_name/></option>
+</$list>
+</$select>
+
+<$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}>
+<$transclude tiddler={{!!settings_tiddler}}/>
+</$tiddler>
+<br>
+Preview:<br>
+<div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'>
+<$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}>
+<$transclude/>
+</$tiddler>
+</div>
+</div>
+
+!!Unfinished Task List template to use:
+This is the template used to generate the list of tasks, click on the name to see the template (How it looks changes based on the display template selected above).<br>
+<div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
+
+<$select tiddler='Upgraded To-Do List' field='task_list_template'>
+<$list filter='[tag[TaskListTemplate]!has[draft.of]]'>
+<option value={{!!title}}><$view field=display_name/></option>
+</$list>
+</$select>
+
+<$tiddler tiddler={{Upgraded To-Do List!!task_list_template}}>
+<$transclude tiddler={{!!settings_tiddler}}/>
+</$tiddler>
+<br>
+Preview:<br>
+<div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'>
+<$tiddler tiddler={{Upgraded To-Do List!!task_list_template}}>
+<$transclude/>
+</$tiddler>
+</div>
+</div>
+
+!!Finished Task List template to use:
+This is the template used to generate the list of tasks, click on the name to see the template (How it looks changes based on the display template selected above).<br>
+<div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
+
+<$select tiddler='Upgraded To-Do List' field='task_list_template'>
+<$list filter='[tag[TaskListTemplate]!has[draft.of]]'>
+<option value={{!!title}}><$view field=display_name/></option>
+</$list>
+</$select>
+
+<$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}>
+<$transclude tiddler={{!!settings_tiddler}}/>
+</$tiddler>
+<br>
+Preview:<br>
+<div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'>
+<$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}>
+<$transclude/>
+</$tiddler>
+</div>
+</div>

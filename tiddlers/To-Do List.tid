@@ -1,0 +1,21 @@
+created: 20141204203125231
+modified: 20141206181601566
+no_edit: true
+tags: 
+title: To-Do List
+
+<$transclude tiddler=NewTaskButton/>
+
+! Outstanding tasks
+
+<$list filter="[!has[draft.of]tag[task]!tag[done]sort[created]!title[TiddlerTaskTemplate]]" template={{!!entry_display_template}}>
+
+<$checkbox tag="done"> <$link to={{!!title}}><$view field="title"/></$link> - <$view field="deadline"/><br><$view field="blurb"/></$checkbox>
+
+</$list>
+
+! Completed tasks
+
+<$list filter="[!has[draft.of]tag[task]tag[done]sort[created]]" template={{!!list_template}} template={{!!finished_task_display_template}}>
+
+</$list>

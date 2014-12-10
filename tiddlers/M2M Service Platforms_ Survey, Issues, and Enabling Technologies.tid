@@ -1,0 +1,32 @@
+blurb:  
+created: 20141205192405161
+creator: inmysocks
+modified: 20141206182621199
+modifier: inmysocks
+subject: Machine-to-machine Communication
+tags: Citations
+title: M2M Service Platforms: Survey, Issues, and Enabling Technologies
+
+Subject: {{!!subject}}<br>
+
+Abstract:
+
+Machine-to-Machine (M2M) refers to technologies with various applications. In order to provide the vision and goals of M2M, an M2M ecosystem with a service platform must be established by the key players in industrial domains so as to substantially reduce development costs and improve time to market of M2M devices and services. The service platform must be supported by M2M enabling technologies and standardization. In this paper, we present a survey of existing M2M service platforms and explore the various research issues and challenges involved in enabling an M2M service platform. We first classify M2M nodes according to their characteristics and required functions, and we then highlight the features of M2M traffic. With these in mind, we discuss the necessity of M2M platforms. By comparing and analyzing the existing approaches and solutions of M2M platforms, we identify the requirements and functionalities of the ideal M2M service platform. Based on these, we propose an M2M service platform (M2SP) architecture and its functionalities, and present the M2M ecosystem with this platform. Different application scenarios are given to illustrate the interaction between the components of the proposed platform. In addition, we discuss the issues and challenges of enabling technologies and standardization activities, and outline future research directions for the M2M network.
+
+Bibtex:
+
+```
+@ARTICLE{6644332,
+author={JaeWoo Kim and Jaiyong Lee and Jaeho Kim and Jaeseok Yun},
+journal={Communications Surveys Tutorials, IEEE},
+title={M2M Service Platforms: Survey, Issues, and Enabling Technologies},
+year={2014},
+month={First},
+volume={16},
+number={1},
+pages={61-76},
+keywords={telecommunication networks;telecommunication traffic;M2M network;M2M service platforms;M2M traffic;M2SP architecture;development cost reduction;machine-to-machine communication;machine-to-machine service platforms;Business;Computer architecture;Ecosystems;IP networks;Protocols;Robot sensing systems;Standards;Addressing;Architecture;Communication and Networking;Identification;Machine-to-Machine;Management;Peer-to-peer;Service Platform;Standardization},
+doi={10.1109/SURV.2013.100713.00203},
+ISSN={1553-877X},}
+```
+<<bottomOfTiddler {{!!title}}>>

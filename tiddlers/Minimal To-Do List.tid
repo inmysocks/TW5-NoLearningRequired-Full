@@ -1,0 +1,26 @@
+created: 20141204050605595
+modified: 20141206180802021
+no_edit: true
+tags: Dashboard
+title: Minimal To-Do List
+
+<$edit-text tiddler='$:/state/Basic To-Do List' field='task_name' width=70 placeholder='Task Name'/><$button>New Task
+<$action-setfield $tiddler={{$:/state/Basic To-Do List!!task_name}} tags='task'/>
+<$action-setfield $tiddler='$:/state/Basic To-Do List' task_name=''/>
+</$button>
+
+! Outstanding tasks
+
+<$list filter="[!has[draft.of]tag[task]!tag[done]sort[created]!title[TiddlerTaskTemplate]]">
+
+<$checkbox tag="done"> <$link to={{!!title}}><$view field="title"/></$link></$checkbox>
+
+</$list>
+
+! Completed tasks
+
+<$list filter="[!has[draft.of]tag[task]tag[done]sort[created]]">
+
+<$checkbox tag="done"> ~~<$link to={{!!title}}><$view field="title"/></$link>~~</$checkbox>
+
+</$list>

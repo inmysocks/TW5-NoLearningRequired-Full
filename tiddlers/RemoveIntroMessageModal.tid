@@ -1,0 +1,11 @@
+created: 20141204205959063
+footer: 
+modified: 20141204210429763
+no_edit: true
+subtitle: Remove the Introduction?
+tags: 
+title: RemoveIntroMessageModal
+
+Are you sure you want to remove the introduction message? Even if you remove it here you can still view it by going to the `Table of Contents` tab and clicking on it there.
+
+<$fieldmangler tiddler=Introduction><$button message='tm-remove-tag' param=Dashboard>Yes</$button></$fieldmangler> <$button message='tm-close-tiddler'>No</$button>
