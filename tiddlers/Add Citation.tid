@@ -1,8 +1,7 @@
 created: 20141205193053640
 creator: inmysocks
-modified: 20141206180717101
+modified: 20141209013200270
 modifier: inmysocks
-no_edit: true
 tags: Dissertation
 title: Add Citation
 
@@ -14,7 +13,7 @@ Abstract:<br>
 
 <$view tiddler='$(abstractTiddler)$' field='text'/>
 
-Citation:
+Bibtex:
 
 ---
 
@@ -44,7 +43,7 @@ Paper Title: <$edit-text tiddler='$:/state/addcitation' field='paper_title' plac
 
 Abstract:<br> <$edit-text tiddler='$:/state/addcitation' placeholder='Abstract'/>
 
-Citation:<br> <$edit-text tiddler='$:/state/addcitation/bibtex' placeholder='BibTex Citation'/>
+Bibtex Citation:<br> <$edit-text tiddler='$:/state/addcitation/bibtex' placeholder='BibTex Citation'/>
 
 <$set name=tiddlerTitle value={{$:/state/addcitation!!paper_title}}>
 <$set name=abstractTiddler value=<<makeAbstractTiddler>>>
@@ -52,7 +51,7 @@ Citation:<br> <$edit-text tiddler='$:/state/addcitation/bibtex' placeholder='Bib
 <$set name=bibTex value=<<getBibTex>>>
 
 <$reveal type='nomatch' state='$:/state/addcition/addsubject' text='newsubject'>
-Subject: <$select state='$:/state/addcitation/subject' default='No Subject'>
+Subject: <$select tiddler='$:/state/addcitation/subject' default='No Subject'>
 <$list filter='[tag[CitationsSubject]]'>
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>
