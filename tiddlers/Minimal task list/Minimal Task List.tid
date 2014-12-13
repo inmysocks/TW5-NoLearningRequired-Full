@@ -2,11 +2,11 @@ created: 20141204050605595
 modified: 20141206180802021
 no_edit: true
 tags: Dashboard
-title: Minimal To-Do List
+title: Minimal Task List
 
-<$edit-text tiddler='$:/state/Basic To-Do List' field='task_name' width=70 placeholder='Task Name'/><$button>New Task
-<$action-setfield $tiddler={{$:/state/Basic To-Do List!!task_name}} tags='task'/>
-<$action-setfield $tiddler='$:/state/Basic To-Do List' task_name=''/>
+<$edit-text tiddler='$:/state/Basic Task List' field='task_name' width=70 placeholder='Task Name'/><$button>New Task
+<$action-setfield $tiddler={{$:/state/Basic Task List!!task_name}} tags='task'/>
+<$action-setfield $tiddler='$:/state/Basic Task List' task_name=''/>
 </$button>
 
 ! Outstanding tasks

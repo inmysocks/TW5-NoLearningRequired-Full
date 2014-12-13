@@ -1,4 +1,4 @@
-caption: To-Do List
+caption: Task List
 created: 20141204015857343
 entry_display_template: BasicTaskDisplayTemplate
 finished_task_display_template: BasicFinishedEntryDisplayTemplate
@@ -7,6 +7,6 @@ modified: 20141206181652561
 no_edit: true
 tags: Dashboard
 task_list_template: BasicTaskListTemplate
-title: Upgraded To-Do List
+title: Upgraded Task List
 
-<<tabs "[[To-Do List]] [[To-Do List Settings]]" [[To-Do List]]>>
+<<tabs "[[Task List]] [[Task List Settings]]" [[Task List]]>>

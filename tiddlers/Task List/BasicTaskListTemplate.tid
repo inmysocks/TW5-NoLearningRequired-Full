@@ -5,6 +5,6 @@ settings_tiddler: BasicTaskListTemplateSettings
 tags: Templates TaskListTemplate
 title: BasicTaskListTemplate
 
-<$list filter=[tag[task]] template= {{Upgraded To-Do List!!entry_display_template}}>
+<$list filter=[tag[task]] template= {{Upgraded Task List!!entry_display_template}}>
 <$checkbox tag="done"> <$link to={{!!title}}><$view field="title"/></$link> - <$view field="deadline"/><br><$view field="blurb"/></$checkbox>
 </$list>
