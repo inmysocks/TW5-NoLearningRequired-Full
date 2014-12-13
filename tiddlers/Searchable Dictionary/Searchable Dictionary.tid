@@ -1,0 +1,39 @@
+blurb:  A list of acronyms that I should remember
+created: 20141212164759301
+creator: inmysocks
+modified: 20141213041059044
+modifier: inmysocks
+tags: Dashboard
+title: Dictionary
+
+\define thisListMacro()
+<$view field=title/> - {{$:/data/Dictionary##$(thisIndex)$}}<br>
+\end
+
+\define thisEditListMacro()
+<$view field=title/> - {{$:/data/Dictionary##$(thisIndex)$}} <$button>Remove<$action-deletefield $tiddler='$:/data/Dictionary' $field=$(thisIndex)$ $value=''/></$button><br>
+\end
+
+\define thisRegEx()
+$(thisSearch)$(?i)
+\end
+
+\define thisSearchMacro()
+<ul>
+<$list filter="[[$:/data/Dictionary]indexes[]regexp:title[(?i)$(thisSearch)$]]">
+<li><<currentTiddler>> - <$transclude tiddler="$:/data/Dictionary" index=<<currentTiddler>>/></li>
+</$list>
+</ul>
+\end
+
+Term: <$edit-text tiddler='$:/temp/dictionary' field='name'/><br>
+Meaning: <$edit-text tiddler='$:/temp/dictionary' field='meaning'/><br>
+<$button>Add Term
+<$action-setfield $tiddler='$:/data/Dictionary' $index={{$:/temp/dictionary!!name}} $value={{$:/temp/dictionary!!meaning}}/>
+<$action-setfield $tiddler='$:/temp/dictionary' name='' meaning=''/>
+</$button>
+
+Search: <$edit-text tiddler='$:/temp/dictionary' field='search'/><br>
+<$set name='thisSearch' value={{$:/temp/dictionary!!search}}>
+<<thisSearchMacro>>
+</$set>

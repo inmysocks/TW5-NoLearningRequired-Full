@@ -12,7 +12,7 @@ This is how each individual contact will be displayed in the list of contacts<br
 
 <div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
 <$select tiddler='Contacts' field='contact_display_template'>
-<$list filter='[tag[ContactDisplayTemplate]]'>
+<$list filter='[plugintiddlers[]tag[ContactDisplayTemplate]][tag[ContactDisplayTemplate]]'>
 <option value={{!!title}}><$view field='display_name'/></option>
 </$list>
 </$select>
@@ -33,7 +33,7 @@ This is the template used to generate the list of contacts, click on the name to
 <div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
 
 <$select tiddler='Contacts' field='contact_list_template'>
-<$list filter='[tag[ContactListTemplate]]'>
+<$list filter='[plugintiddlers[]tag[ContactListTemplate]][tag[ContactListTemplate]]'>
 <option value={{!!title}}><$view field=display_name/></option>
 </$list>
 </$select>

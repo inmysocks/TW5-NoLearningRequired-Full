@@ -10,5 +10,3 @@ These tiddlers change the behavior or appearance of the other parts of the wiki.
 
 <$list filter=[tag[Wiki Settings]]>
 </$list>
-
-<<bottomOfTiddler {{!!title}}>>

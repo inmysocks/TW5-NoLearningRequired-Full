@@ -1,0 +1,20 @@
+created: 20141212201657131
+modified: 20141212201721939
+modifier: inmysocks
+title: $:/data/Dictionary
+type: application/json
+
+{
+    "TT&C": "Tracking, Telemetry and Command",
+    "SGLS": "Space-Ground Link Subsystem",
+    "PSD": "Power Spectral Density",
+    "BER": "Bit Error Rate",
+    "SNR": "Signal to Noise Ratio",
+    "PCM": "Pulse Coded Modulation",
+    "PSK": "Phase Shift Keying",
+    "FSK": "Frequency Shift Keying",
+    "AM": "Amplitude Modulation",
+    "AWGN": "Additive White Gaussian Noise",
+    "BPSK": "Binary Phase Shift Keying",
+    "LASER": "Light Amplification through Sympathetic Emission of Radiation"
+}
