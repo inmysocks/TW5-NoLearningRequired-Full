@@ -1,0 +1,9 @@
+created: 20141217001538052
+modified: 20141217014925474
+no_edit: true
+tags: 
+title: Note List
+
+<$list filter='[tag[Note]]'>
+
+</$list>

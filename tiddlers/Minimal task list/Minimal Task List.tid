@@ -4,7 +4,7 @@ no_edit: true
 tags: Dashboard
 title: Minimal Task List
 
-<$edit-text tiddler='$:/state/Basic Task List' field='task_name' width=70 placeholder='Task Name'/><$button>New Task
+<$edit-text tiddler='$:/state/Basic Task List' field='task_name' class='tc-edit-texteditor' placeholder='Task Name'/><$button>New Task
 <$action-setfield $tiddler={{$:/state/Basic Task List!!task_name}} tags='task'/>
 <$action-setfield $tiddler='$:/state/Basic Task List' task_name=''/>
 </$button>

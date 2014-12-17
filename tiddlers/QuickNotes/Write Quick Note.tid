@@ -1,0 +1,24 @@
+created: 20141216223509853
+modified: 20141217014933961
+no_edit: true
+title: Write Quick Note
+
+\define thisTempTiddler(stateNumber)
+$:/temp/$(someName)$$stateNumber$
+\end
+
+<$set name=someName value=<<qualify>>>
+<$tiddler tiddler=<<thisTempTiddler>>>
+Note Name: <$edit-text tiddler=<<thisTempTiddler>> field='name' class='tc-edit-texteditor' placeholder='Note Name'/>
+<$edit-text tiddler=<<thisTempTiddler>> field='text' class='tc-edit-texteditor' placeholder='Note Text'/>
+<$button>Create Note
+<$action-setfield $tiddler={{!!name}} $field='text' $value={{!!text}} tags='Note'/>
+<$action-setfield $tiddler=<<thisTempTiddler>> $field='text' $value=''/>
+<$action-setfield $tiddler=<<thisTempTiddler>> $field='name' $value=''/>
+</$button>
+<$button>Reset
+<$action-setfield $tiddler=<<thisTempTiddler>> $field='text' $value=''/>
+<$action-setfield $tiddler=<<thisTempTiddler>> $field='name' $value=''/>
+</$button>
+</$tiddler>
+</$set>

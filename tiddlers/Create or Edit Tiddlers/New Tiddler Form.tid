@@ -7,7 +7,7 @@ title: New Tiddler Form
 !!Step 1 - ''Give the tiddler a name'' 
 
 ---
-<$edit-text tiddler='$:/state/NewTiddlerForm' field='name_temp' placeholder='Tiddler Name' size=70/><br>
+<$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTiddlerForm' field='name_temp' placeholder='Tiddler Name'/><br>
 
 !!Step 2 - ''Fill in tiddler text''
 
@@ -15,14 +15,14 @@ title: New Tiddler Form
 You can use any WikiText here, see [[Wiki Formatting - text, tables, etc.]] for some easy examples of text formatting. 
 You can resize the exiting field by clicking and dragging the lower right corner.
 
-<$edit-text tiddler='$:/state/NewTiddlerForm' field='text' placeholder='Tiddler Text' size=10/><br>
+<$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTiddlerForm' field='text' placeholder='Tiddler Text'/><br>
 
 !!Step 3 - ''Give the tiddler a description'' (optional)
 
 ---
 This can be used as a short description or summary of what each tiddler is. It can be useful in lists.
 
-<$edit-text tiddler='$:/state/NewTiddlerForm' field='description' placeholder='Tiddler Description' size=70/><br>
+<$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTiddlerForm' field='description' placeholder='Tiddler Description'/><br>
 
 !!Step 4 - ''Add a tag or tags to the tiddler'' (optional)
 

@@ -2,6 +2,7 @@ created: 20141205193053640
 creator: inmysocks
 modified: 20141209013200270
 modifier: inmysocks
+no_edit: true
 tags: Dissertation
 title: Add Citation
 
@@ -39,11 +40,11 @@ $(tiddlerTitle)$_BibTex
 <$view tiddler='$(bibTexTiddler)$' field='text'/>
 \end
 
-Paper Title: <$edit-text tiddler='$:/state/addcitation' field='paper_title' placeholder='papertitle' size=70/><br>
+Paper Title: <$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation' field='paper_title' placeholder='papertitle' size=70/><br>
 
-Abstract:<br> <$edit-text tiddler='$:/state/addcitation' placeholder='Abstract'/>
+Abstract:<br> <$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation' placeholder='Abstract'/>
 
-Bibtex Citation:<br> <$edit-text tiddler='$:/state/addcitation/bibtex' placeholder='BibTex Citation'/>
+Bibtex Citation:<br> <$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation/bibtex' placeholder='BibTex Citation'/>
 
 <$set name=tiddlerTitle value={{$:/state/addcitation!!paper_title}}>
 <$set name=abstractTiddler value=<<makeAbstractTiddler>>>
@@ -59,7 +60,7 @@ Subject: <$select tiddler='$:/state/addcitation/subject' default='No Subject'>
 <$button set='$:/state/addcition/addsubject' setTo='newsubject'>New Subject</$button>
 </$reveal>
 <$reveal type='match' state='$:/state/addcition/addsubject' text='newsubject'>
-Subject Name: <$edit-text tiddler='$:/state/addcition/addsubject' field='newsubjectname'/><br>
+Subject Name: <$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcition/addsubject' field='newsubjectname'/><br>
 <$button>Add Subject<$action-setfield $tiddler={{$:/state/addcition/addsubject!!newsubjectname}} tags=CitationsSubject/>
 <$action-setfield $tiddler='$:/state/addcition/addsubject' $field='newsubjectname' $value=''/>
 </$button>

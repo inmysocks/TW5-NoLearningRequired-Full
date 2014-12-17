@@ -19,14 +19,14 @@ title: Edit Tiddler Form
 You can use any WikiText here, see [[Wiki Formatting - text, tables, etc.]] for some easy examples of text formatting. 
 You can resize the exiting field by clicking and dragging the lower right corner.
 
-<$edit-text tiddler={{$:/state/EditTiddlerForm}} field='text' placeholder='Tiddler Text' size=100/><br>
+<$edit-text class='tc-edit-texteditor' tiddler={{$:/state/EditTiddlerForm}} field='text' placeholder='Tiddler Text' size=100/><br>
 
 !!Step 3 - ''Give the tiddler a description'' (optional)
 
 ---
 This can be used as a short description or summary of what each tiddler is. It can be useful in lists.
 
-<$edit-text tiddler={{$:/state/EditTiddlerForm}} field='description' placeholder='Tiddler Description' size=70/><br>
+<$edit-text class='tc-edit-texteditor' tiddler={{$:/state/EditTiddlerForm}} field='description' placeholder='Tiddler Description' size=70/><br>
 
 !!Step 4 - ''Add a tag or tags to the tiddler'' (optional)
 

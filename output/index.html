@@ -233,7 +233,7 @@ Error message and password prompt
 
 <li>Manage Table of Contents</li>
 
-<li>Minimal To-Do List</li>
+<li>Minimal Task List</li>
 
 <li>New Contact Form</li>
 
@@ -249,15 +249,15 @@ Error message and password prompt
 
 <li>SimpleContactListTemplate</li>
 
-<li>To-Do List</li>
+<li>Task List</li>
 
-<li>To-Do List Settings</li>
+<li>Task List Settings</li>
 
 <li>TOCArrangeTemplate</li>
 
 <li>TOCArrangeTemplate2</li>
 
-<li>Upgraded To-Do List</li>
+<li>Upgraded Task List</li>
 
 <li>Wiki Settings</li>
 
@@ -5729,7 +5729,7 @@ Subject Name: &lt;$edit-text tiddler='$:/state/addcition/addsubject' field='news
 <pre></pre>
 </div>
 <div created="20141204042704859" display_name="Basic List" modified="20141206181153765" settings_tiddler="BasicTaskListTemplateSettings" tags="Templates TaskListTemplate" title="BasicTaskListTemplate">
-<pre>&lt;$list filter=[tag[task]] template= {{Upgraded To-Do List!!entry_display_template}}&gt;
+<pre>&lt;$list filter=[tag[task]] template= {{Upgraded Task List!!entry_display_template}}&gt;
 &lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt; - &lt;$view field=&quot;deadline&quot;/&gt;&lt;br&gt;&lt;$view field=&quot;blurb&quot;/&gt;&lt;/$checkbox&gt;
 &lt;/$list&gt;</pre>
 </div>
@@ -6336,10 +6336,10 @@ Find the tiddler that you want to move in the table of contents and click the `U
 &lt;/$list&gt;
 &lt;/$set&gt;</pre>
 </div>
-<div created="20141204050605595" modified="20141206180802021" no_edit="true" tags="Dashboard" title="Minimal To-Do List">
-<pre>&lt;$edit-text tiddler='$:/state/Basic To-Do List' field='task_name' width=70 placeholder='Task Name'/&gt;&lt;$button&gt;New Task
-&lt;$action-setfield $tiddler={{$:/state/Basic To-Do List!!task_name}} tags='task'/&gt;
-&lt;$action-setfield $tiddler='$:/state/Basic To-Do List' task_name=''/&gt;
+<div created="20141204050605595" modified="20141206180802021" no_edit="true" tags="Dashboard" title="Minimal Task List">
+<pre>&lt;$edit-text tiddler='$:/state/Basic Task List' field='task_name' width=70 placeholder='Task Name'/&gt;&lt;$button&gt;New Task
+&lt;$action-setfield $tiddler={{$:/state/Basic Task List!!task_name}} tags='task'/&gt;
+&lt;$action-setfield $tiddler='$:/state/Basic Task List' task_name=''/&gt;
 &lt;/$button&gt;
 
 ! Outstanding tasks
@@ -6488,7 +6488,7 @@ Details: (&lt;$button set='$:/state/NewTaskDetails' setTo='noshow'&gt;Cancel&lt;
 &lt;/$reveal&gt;</pre>
 </div>
 <div created="20141204033141546" modified="20141206181237729" no_edit="true" tags="" title="NewTaskButtonSettings">
-<pre>This is going to control the configuration for the upgraded to-do list. It should control both the Create New Task button and how the tasks are displayed (normal list, in groups, show/hide completed tasks, show/hide a delete task button, etc.)</pre>
+<pre>This is going to control the configuration for the upgraded task list. It should control both the Create New Task button and how the tasks are displayed (normal list, in groups, show/hide completed tasks, show/hide a delete task button, etc.)</pre>
 </div>
 <div created="20141204205959063" footer="" modified="20141209213124307" no_edit="true" subtitle="Remove the Introduction?" tags="" title="RemoveIntroMessageModal">
 <pre>Are you sure you want to remove the introduction message? Even if you remove it here you can still view it by going to the `Table of Contents` tab and clicking on it there.
@@ -6504,7 +6504,7 @@ Details: (&lt;$button set='$:/state/NewTaskDetails' setTo='noshow'&gt;Cancel&lt;
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20141204203125231" modified="20141206181601566" no_edit="true" tags="" title="To-Do List">
+<div created="20141204203125231" modified="20141206181601566" no_edit="true" tags="" title="Task List">
 <pre>&lt;$transclude tiddler=NewTaskButton/&gt;
 
 ! Outstanding tasks
@@ -6521,25 +6521,25 @@ Details: (&lt;$button set='$:/state/NewTaskDetails' setTo='noshow'&gt;Cancel&lt;
 
 &lt;/$list&gt;</pre>
 </div>
-<div blurb="Settings for the upgraded to-do list" created="20141204041129441" modified="20141206181617656" no_edit="true" tags="[[Wiki Settings]]" title="To-Do List Settings">
+<div blurb="Settings for the upgraded task list" created="20141204041129441" modified="20141213052327846" no_edit="true" tags="[[Wiki Settings]]" title="Task List Settings">
 <pre>!!Unfinished Task Display template to use:
 This is how each individual task will be displayed in the list&lt;br&gt;
 
 &lt;div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'&gt;
-&lt;$select tiddler='Upgraded To-Do List' field='entry_display_template'&gt;
-&lt;$list filter='[tag[ToDoEntryDisplayTemplate]!has[draft.of]]'&gt;
+&lt;$select tiddler='Upgraded Task List' field='entry_display_template'&gt;
+&lt;$list filter='[plugintiddlers[]tag[ToDoEntryDisplayTemplate]!has[draft.of]][tag[ToDoEntryDisplayTemplate]!has[draft.of]]'&gt;
 &lt;option value={{!!title}}&gt;&lt;$view field='display_name'/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
 
-&lt;$tiddler tiddler={{Upgraded To-Do List!!entry_display_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!entry_display_template}}&gt;
 &lt;$transclude tiddler={{!!settings_tiddler}}/&gt;
 &lt;/$tiddler&gt;
  
 &lt;br&gt;
 Preview: &lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'&gt;
-&lt;$tiddler tiddler={{Upgraded To-Do List!!entry_display_template}}&gt;&lt;$transclude/&gt;&lt;/$tiddler&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!entry_display_template}}&gt;&lt;$transclude/&gt;&lt;/$tiddler&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -6547,19 +6547,19 @@ Preview: &lt;br&gt;
 This is the template used to generate the list of tasks, click on the name to see the template (How it looks changes based on the display template selected above).&lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'&gt;
 
-&lt;$select tiddler='Upgraded To-Do List' field='finished_task_list_template'&gt;
-&lt;$list filter='[tag[ToDoEntryDisplayTemplate]!has[draft.of]]'&gt;
+&lt;$select tiddler='Upgraded Task List' field='finished_task_list_template'&gt;
+&lt;$list filter='[plugintiddlers[]tag[ToDoEntryDisplayTemplate]!has[draft.of]][tag[ToDoEntryDisplayTemplate]!has[draft.of]]'&gt;
 &lt;option value={{!!title}}&gt;&lt;$view field=display_name/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
 
-&lt;$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!finished_task_list_template}}&gt;
 &lt;$transclude tiddler={{!!settings_tiddler}}/&gt;
 &lt;/$tiddler&gt;
 &lt;br&gt;
 Preview:&lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'&gt;
-&lt;$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!finished_task_list_template}}&gt;
 &lt;$transclude/&gt;
 &lt;/$tiddler&gt;
 &lt;/div&gt;
@@ -6569,19 +6569,19 @@ Preview:&lt;br&gt;
 This is the template used to generate the list of tasks, click on the name to see the template (How it looks changes based on the display template selected above).&lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'&gt;
 
-&lt;$select tiddler='Upgraded To-Do List' field='task_list_template'&gt;
-&lt;$list filter='[tag[TaskListTemplate]!has[draft.of]]'&gt;
+&lt;$select tiddler='Upgraded Task List' field='task_list_template'&gt;
+&lt;$list filter='[plugintiddlers[]tag[TaskListTemplate]!has[draft.of]][tag[TaskListTemplate]!has[draft.of]]'&gt;
 &lt;option value={{!!title}}&gt;&lt;$view field=display_name/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
 
-&lt;$tiddler tiddler={{Upgraded To-Do List!!task_list_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!task_list_template}}&gt;
 &lt;$transclude tiddler={{!!settings_tiddler}}/&gt;
 &lt;/$tiddler&gt;
 &lt;br&gt;
 Preview:&lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'&gt;
-&lt;$tiddler tiddler={{Upgraded To-Do List!!task_list_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!task_list_template}}&gt;
 &lt;$transclude/&gt;
 &lt;/$tiddler&gt;
 &lt;/div&gt;
@@ -6591,19 +6591,19 @@ Preview:&lt;br&gt;
 This is the template used to generate the list of tasks, click on the name to see the template (How it looks changes based on the display template selected above).&lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'&gt;
 
-&lt;$select tiddler='Upgraded To-Do List' field='task_list_template'&gt;
-&lt;$list filter='[tag[TaskListTemplate]!has[draft.of]]'&gt;
+&lt;$select tiddler='Upgraded Task List' field='task_list_template'&gt;
+&lt;$list filter='[plugintiddlers[]tag[TaskListTemplate]!has[draft.of]][tag[TaskListTemplate]!has[draft.of]]'&gt;
 &lt;option value={{!!title}}&gt;&lt;$view field=display_name/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
 
-&lt;$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!finished_task_list_template}}&gt;
 &lt;$transclude tiddler={{!!settings_tiddler}}/&gt;
 &lt;/$tiddler&gt;
 &lt;br&gt;
 Preview:&lt;br&gt;
 &lt;div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'&gt;
-&lt;$tiddler tiddler={{Upgraded To-Do List!!finished_task_list_template}}&gt;
+&lt;$tiddler tiddler={{Upgraded Task List!!finished_task_list_template}}&gt;
 &lt;$transclude/&gt;
 &lt;/$tiddler&gt;
 &lt;/div&gt;
@@ -6647,8 +6647,8 @@ Select New Location: &lt;$select tiddler='$:/state/temporaryTocLocation'&gt;
 &lt;$view field='title'/&gt;&lt;br&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div caption="To-Do List" created="20141204015857343" entry_display_template="BasicTaskDisplayTemplate" finished_task_display_template="BasicFinishedEntryDisplayTemplate" finished_task_list_template="BasicFinishedEntryDisplayTemplate" modified="20141206181652561" no_edit="true" tags="Dashboard" task_list_template="BasicTaskListTemplate" title="Upgraded To-Do List">
-<pre>&lt;&lt;tabs &quot;[[To-Do List]] [[To-Do List Settings]]&quot; [[To-Do List]]&gt;&gt;</pre>
+<div caption="Task List" created="20141204015857343" entry_display_template="BasicTaskDisplayTemplate" finished_task_display_template="BasicFinishedEntryDisplayTemplate" finished_task_list_template="BasicFinishedEntryDisplayTemplate" modified="20141206181652561" no_edit="true" tags="Dashboard" task_list_template="BasicTaskListTemplate" title="Upgraded Task List">
+<pre>&lt;&lt;tabs &quot;[[Task List]] [[Task List Settings]]&quot; [[Task List]]&gt;&gt;</pre>
 </div>
 <div created="20141104204758595" creator="inmysocks" modified="20141206190532660" modifier="inmysocks" no_edit="true" tags="Contents" title="Wiki Settings">
 <pre>These tiddlers change the behavior or appearance of the other parts of the wiki.

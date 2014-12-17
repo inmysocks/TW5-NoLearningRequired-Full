@@ -3,6 +3,7 @@ created: 20141212164759301
 creator: inmysocks
 modified: 20141213041059044
 modifier: inmysocks
+no_edit: true
 tags: Dashboard
 title: Dictionary
 
@@ -26,8 +27,8 @@ $(thisSearch)$(?i)
 </ul>
 \end
 
-Term: <$edit-text tiddler='$:/temp/dictionary' field='name'/><br>
-Meaning: <$edit-text tiddler='$:/temp/dictionary' field='meaning'/><br>
+Term: <$edit-text class='tc-edit-texteditor' tiddler='$:/temp/dictionary' field='name'/><br>
+Meaning: <$edit-text class='tc-edit-texteditor' tiddler='$:/temp/dictionary' field='meaning'/><br>
 <$button>Add Term
 <$action-setfield $tiddler='$:/data/Dictionary' $index={{$:/temp/dictionary!!name}} $value={{$:/temp/dictionary!!meaning}}/>
 <$action-setfield $tiddler='$:/temp/dictionary' name='' meaning=''/>
