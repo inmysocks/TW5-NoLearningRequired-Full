@@ -34,8 +34,9 @@ title: New Contact Form
 <$button>Create Contact
 <$action-setfield $tiddler=<<getFullName>> first_name={{ContactTemp!!firstname}} last_name={{ContactTemp!!lastname}} nick_name={{ContactTemp!!nickname}} personal_email_address={{ContactTemp!!personalemailaddress}} work_email_address={{ContactTemp!!workemailaddress}} other_email_address={{ContactTemp!!otheremailaddress}} home_phone_number={{ContactTemp!!homephonenumber}} work_phone_number={{ContactTemp!!workphonenumber}} cell_phone_number={{ContactTemp!!cellphonenumber}} street_address={{ContactTemp!!streetaddress}} country={{ContactTemp!!country}} state_or_provence={{ContactTemp!!stateprovence}} zip_code={{ContactTemp!!zipcode}} city={{ContactTemp!!city}} blurb={{ContactTemp!!blurb}} group={{ContactTemp!!group}} tags="Contacts"/>
 <$action-setfield $tiddler=ContactTemp firstname="" lastname="" nickname="" personalemailaddress="" workemailaddress="" otheremailaddress="" homephonenumber="" workphonenumber="" cellphonenumber="" streetaddress="" country="" stateprovence="" zipcode="" city="" blurb=""/>
-<!--
-<$action-sendmessage $message="tm-new-tiddler" title=<<getFullName>> first_name={{ContactTemp!!firstName}} last_name={{ContactTemp!!lastName}} nick_name={{ContactTemp!!nickName}} personal_email_address={{ContactTemp!!personalEmailAddress}} work_email_address={{ContactTemp!!workEmailAddress}} other_email_address={{ContactTemp!!otherEmailAddress}} home_phone_number={{ContactTemp!!homePhoneNumber}} work_phone_number={{ContactTemp!!workPhoneNumber}} cell_phone_number={{ContactTemp!!cellPhoneNumber}} street_address={{ContactTemp!!streetAddress}} country={{ContactTemp!!country}} state_or_provence={{ContactTemp!!stateProvence}} zip_code={{ContactTemp!!zipCode}} city={{ContactTemp!!city}} blurb={{ContactTemp!!blurb}} group={{ContactTemp!!group}} tags="Contacts"/> -->
+</$button>
+<$button>Clear Form
+<$action-setfield $tiddler=ContactTemp firstname="" lastname="" nickname="" personalemailaddress="" workemailaddress="" otheremailaddress="" homephonenumber="" workphonenumber="" cellphonenumber="" streetaddress="" country="" stateprovence="" zipcode="" city="" blurb=""/>
 </$button>
 </$fieldmangler>
 </$set>

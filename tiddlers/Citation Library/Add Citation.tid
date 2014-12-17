@@ -74,6 +74,11 @@ Subject Name: <$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcition
 <$action-setfield $tiddler=<<tiddlerTitle>> tags='Citations'/>
 <$action-setfield $tiddler=<<tiddlerTitle>> $field='subject' $value={{$:/state/addcitation/subject}}/>
 <$action-setfield $tiddler='$:/state/addcitation' text=''/><$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/><$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/></$button>
+<$button>Clear Form
+<$action-setfield $tiddler='$:/state/addcitation' text=''/>
+<$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/>
+<$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/>
+</$button>
 
 </$set>
 </$set>

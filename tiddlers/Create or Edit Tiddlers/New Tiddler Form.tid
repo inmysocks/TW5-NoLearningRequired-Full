@@ -71,3 +71,6 @@ Press this button and the tiddler will be created and opened so you can view it.
 <$action-navigate $to={{$:/state/NewTiddlerForm!!name_temp}}/>
 <$action-setfield $tiddler='$:/state/NewTiddlerForm' name_temp='' text='' description='' tags=''/>
 </$button>
+<$button>Clear Form
+<$action-setfield $tiddler='$:/state/NewTiddlerForm' name_temp='' text='' description='' tags=''/>
+</$button>

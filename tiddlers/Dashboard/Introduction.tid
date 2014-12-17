@@ -15,10 +15,14 @@ If you just want to get started working then you can click on one of the options
 
 Currently the options are:
 
+*`Citation Library` - a simple citation database
 *`Contacts` - a contact database with a simple interface
 *`Create or Edit Tiddlers` - a simple interface for adding more tiddlers to this wiki
-*`Minimal To-Do List` - a task list that just lists tasks and allows you to check them off when they are finished.
-*`To-Do List` - a more advanced task list that has options for adding short descriptions, deadlines and a more detailed explanation to the task. On this list if you click on a task name it will open up the details you have given that task.
+*`Dictionary` - a searchable and editable dictionary
+*`Manage Table of Contents` - a TOC manager for tiddlywiki
+*`Minimal Task List` - a task list that just lists tasks and allows you to check them off when they are finished.
+*`Quick Notes` - a simple searchable notepad
+*`Task List` - a more advanced task list that has options for adding short descriptions, deadlines and a more detailed explanation to the task. On this list if you click on a task name it will open up the details you have given that task.
 
 !!What do these words mean?
 

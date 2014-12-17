@@ -147,7 +147,7 @@ Error message and password prompt
 
 <li>$:/state/New Contact Form</li>
 
-<li>$:/state/New Tiddler Form</li>
+<li>$:/state/NewTiddlerForm</li>
 
 <li>$:/state/sidebar</li>
 
@@ -164,6 +164,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>Add Citation</li>
+
+<li>Another Note</li>
 
 <li>BasicFinishedEntryDisplayTemplate</li>
 
@@ -243,6 +245,12 @@ Error message and password prompt
 
 <li>NewTaskButtonSettings</li>
 
+<li>Note List</li>
+
+<li>Note Name</li>
+
+<li>Quick Notes</li>
+
 <li>RemoveIntroMessageModal</li>
 
 <li>SimpleContactDisplayTemplate</li>
@@ -260,6 +268,8 @@ Error message and password prompt
 <li>Upgraded Task List</li>
 
 <li>Wiki Settings</li>
+
+<li>Write Quick Note</li>
 
 </ul>
 </p>
@@ -5533,9 +5543,8 @@ Error message and password prompt
 <div modified="20141203193358265" title="$:/state/New Contact Form">
 <pre>hide</pre>
 </div>
-<div add_or_create_tag="create" created="20141204003812621" modified="20141204003812621" title="$:/state/New Tiddler Form">
-<pre>
-</pre>
+<div add_or_create_tag="create" created="20141217020105675" modified="20141217020732119" title="$:/state/NewTiddlerForm">
+<pre></pre>
 </div>
 <div modified="20141206184954316" title="$:/state/sidebar">
 <pre>no</pre>
@@ -5641,7 +5650,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141205193053640" creator="inmysocks" modified="20141209013200270" modifier="inmysocks" tags="Dissertation" title="Add Citation">
+<div created="20141205193053640" creator="inmysocks" modified="20141209013200270" modifier="inmysocks" no_edit="true" tags="Dissertation" title="Add Citation">
 <pre>\define makeCitationText()
 
 Subject: {{!!subject}}&lt;br&gt;
@@ -5676,11 +5685,11 @@ $(tiddlerTitle)$_BibTex
 &lt;$view tiddler='$(bibTexTiddler)$' field='text'/&gt;
 \end
 
-Paper Title: &lt;$edit-text tiddler='$:/state/addcitation' field='paper_title' placeholder='papertitle' size=70/&gt;&lt;br&gt;
+Paper Title: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation' field='paper_title' placeholder='papertitle' size=70/&gt;&lt;br&gt;
 
-Abstract:&lt;br&gt; &lt;$edit-text tiddler='$:/state/addcitation' placeholder='Abstract'/&gt;
+Abstract:&lt;br&gt; &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation' placeholder='Abstract'/&gt;
 
-Bibtex Citation:&lt;br&gt; &lt;$edit-text tiddler='$:/state/addcitation/bibtex' placeholder='BibTex Citation'/&gt;
+Bibtex Citation:&lt;br&gt; &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation/bibtex' placeholder='BibTex Citation'/&gt;
 
 &lt;$set name=tiddlerTitle value={{$:/state/addcitation!!paper_title}}&gt;
 &lt;$set name=abstractTiddler value=&lt;&lt;makeAbstractTiddler&gt;&gt;&gt;
@@ -5696,7 +5705,7 @@ Subject: &lt;$select tiddler='$:/state/addcitation/subject' default='No Subject'
 &lt;$button set='$:/state/addcition/addsubject' setTo='newsubject'&gt;New Subject&lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal type='match' state='$:/state/addcition/addsubject' text='newsubject'&gt;
-Subject Name: &lt;$edit-text tiddler='$:/state/addcition/addsubject' field='newsubjectname'/&gt;&lt;br&gt;
+Subject Name: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcition/addsubject' field='newsubjectname'/&gt;&lt;br&gt;
 &lt;$button&gt;Add Subject&lt;$action-setfield $tiddler={{$:/state/addcition/addsubject!!newsubjectname}} tags=CitationsSubject/&gt;
 &lt;$action-setfield $tiddler='$:/state/addcition/addsubject' $field='newsubjectname' $value=''/&gt;
 &lt;/$button&gt;
@@ -5710,10 +5719,18 @@ Subject Name: &lt;$edit-text tiddler='$:/state/addcition/addsubject' field='news
 &lt;$action-setfield $tiddler=&lt;&lt;tiddlerTitle&gt;&gt; tags='Citations'/&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;tiddlerTitle&gt;&gt; $field='subject' $value={{$:/state/addcitation/subject}}/&gt;
 &lt;$action-setfield $tiddler='$:/state/addcitation' text=''/&gt;&lt;$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/&gt;&lt;$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/&gt;&lt;/$button&gt;
+&lt;$button&gt;Clear Form
+&lt;$action-setfield $tiddler='$:/state/addcitation' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/&gt;
+&lt;/$button&gt;
 
 &lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;</pre>
+</div>
+<div modified="20141217001824416" tags="Note" title="Another Note">
+<pre>Some more text</pre>
 </div>
 <div created="20141204051456012" display_name="Basic Finished Entry" modified="20141206181105485" no_edit="true" settings_tiddler="BasicFinishedTaskDisplayTemplateSettings" tags="Templates ToDoEntryDisplayTemplate" title="BasicFinishedEntryDisplayTemplate">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; ~~&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;~~&lt;/$checkbox&gt;
@@ -5739,7 +5756,7 @@ Subject Name: &lt;$edit-text tiddler='$:/state/addcition/addsubject' field='news
 <div created="20141205200355907" modified="20141206180629653" no_edit="true" tags="Dashboard" title="Citation Library">
 <pre>&lt;&lt;tabs &quot;Citations [[Add Citation]]&quot; Citations&gt;&gt;</pre>
 </div>
-<div created="20141111191625685" creator="inmysocks" modified="20141209194846383" modifier="inmysocks" tags="Dissertation" title="Citations">
+<div created="20141111191625685" creator="inmysocks" modified="20141209194846383" modifier="inmysocks" no_edit="true" tags="Dissertation" title="Citations">
 <pre>\define getSubject()
 [subject[$(subject)$]]
 \end
@@ -6048,7 +6065,7 @@ About (&lt;$button set=&quot;$:/state/$(tiddlerName)$About&quot; setTo=&quot;hid
 <div caption="Main Dashboard" created="20141203194541067" modified="20141206183332945" tags="Templates" title="DashboardTemplate">
 <pre>&lt;&lt;toc-tabbed-internal-nav tag:&quot;Dashboard&quot; selectedTiddler:&quot;$:/temp/toc/selectedTiddler&quot; unselectedText:&quot;Select a topic in the table of contents. Click the arrow to expand a topic.&quot; default:&quot;Introduction&quot;&gt;&gt;</pre>
 </div>
-<div blurb="A list of acronyms that I should remember" created="20141212164759301" creator="inmysocks" modified="20141213041059044" modifier="inmysocks" tags="Dashboard" title="Dictionary">
+<div blurb="A list of acronyms that I should remember" created="20141212164759301" creator="inmysocks" modified="20141213041059044" modifier="inmysocks" no_edit="true" tags="Dashboard" title="Dictionary">
 <pre>\define thisListMacro()
 &lt;$view field=title/&gt; - {{$:/data/Dictionary##$(thisIndex)$}}&lt;br&gt;
 \end
@@ -6069,16 +6086,53 @@ $(thisSearch)$(?i)
 &lt;/ul&gt;
 \end
 
-Term: &lt;$edit-text tiddler='$:/temp/dictionary' field='name'/&gt;&lt;br&gt;
-Meaning: &lt;$edit-text tiddler='$:/temp/dictionary' field='meaning'/&gt;&lt;br&gt;
+\define thisEditMacro()
+&lt;ul&gt;
+&lt;$list filter=&quot;[[$:/data/Dictionary]indexes[]regexp:title[(?i)$(thisSearch)$]]&quot;&gt;
+&lt;$set name=thisItem value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;li&gt;&lt;&lt;thisDeleteButton&gt;&gt; &lt;&lt;currentTiddler&gt;&gt; - &lt;$transclude tiddler=&quot;$:/data/Dictionary&quot; index=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/li&gt;
+
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+\end
+
+\define thisDeleteButton()
+&lt;$button set='$:/data/Dictionary##$(thisItem)$'&gt;{{$:/core/images/delete-button}}&lt;/$button&gt;
+\end
+
+Term: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/temp/dictionary' field='name'/&gt;&lt;br&gt;
+Meaning: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/temp/dictionary' field='meaning'/&gt;&lt;br&gt;
+&lt;$reveal type='match' state='$:/temp/dictionary!!name' text=''&gt;
+&lt;$button&gt;Add Term&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/temp/dictionary!!name' text=''&gt;
 &lt;$button&gt;Add Term
 &lt;$action-setfield $tiddler='$:/data/Dictionary' $index={{$:/temp/dictionary!!name}} $value={{$:/temp/dictionary!!meaning}}/&gt;
 &lt;$action-setfield $tiddler='$:/temp/dictionary' name='' meaning=''/&gt;
 &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/state/dictionary/editreveal' text='edit'&gt;
+&lt;$button set='$:/state/dictionary/editreveal' setTo='edit'&gt;Edit Dictionary&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/dictionary/editreveal' text='edit'&gt;
+&lt;$button set='$:/state/dictionary/editreveal' setTo='noedit'&gt;Done Editing&lt;/$button&gt;
+&lt;/$reveal&gt;
 
 Search: &lt;$edit-text tiddler='$:/temp/dictionary' field='search'/&gt;&lt;br&gt;
+&lt;$reveal type='nomatch' state='$:/state/dictionary/editreveal' text='edit'&gt;
+Type in the search box to find specific items on the list
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/dictionary/editreveal' text='edit'&gt;
+Click on the trashcan icon to remove an item
+&lt;/$reveal&gt;
 &lt;$set name='thisSearch' value={{$:/temp/dictionary!!search}}&gt;
+&lt;$reveal type='nomatch' state='$:/state/dictionary/editreveal' text='edit'&gt;
 &lt;&lt;thisSearchMacro&gt;&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/dictionary/editreveal' text='edit'&gt;
+&lt;&lt;thisEditMacro&gt;&gt;
+&lt;/$reveal&gt;
 &lt;/$set&gt;</pre>
 </div>
 <div created="20141203202736556" modified="20141204013102397" no_edit="true" tags="Tools" title="Edit Tiddler Form">
@@ -6097,14 +6151,14 @@ Search: &lt;$edit-text tiddler='$:/temp/dictionary' field='search'/&gt;&lt;br&gt
 You can use any WikiText here, see [[Wiki Formatting - text, tables, etc.]] for some easy examples of text formatting. 
 You can resize the exiting field by clicking and dragging the lower right corner.
 
-&lt;$edit-text tiddler={{$:/state/EditTiddlerForm}} field='text' placeholder='Tiddler Text' size=100/&gt;&lt;br&gt;
+&lt;$edit-text class='tc-edit-texteditor' tiddler={{$:/state/EditTiddlerForm}} field='text' placeholder='Tiddler Text' size=100/&gt;&lt;br&gt;
 
 !!Step 3 - ''Give the tiddler a description'' (optional)
 
 ---
 This can be used as a short description or summary of what each tiddler is. It can be useful in lists.
 
-&lt;$edit-text tiddler={{$:/state/EditTiddlerForm}} field='description' placeholder='Tiddler Description' size=70/&gt;&lt;br&gt;
+&lt;$edit-text class='tc-edit-texteditor' tiddler={{$:/state/EditTiddlerForm}} field='description' placeholder='Tiddler Description' size=70/&gt;&lt;br&gt;
 
 !!Step 4 - ''Add a tag or tags to the tiddler'' (optional)
 
@@ -6273,10 +6327,14 @@ If you just want to get started working then you can click on one of the options
 
 Currently the options are:
 
+*`Citation Library` - a simple citation database
 *`Contacts` - a contact database with a simple interface
 *`Create or Edit Tiddlers` - a simple interface for adding more tiddlers to this wiki
-*`Minimal To-Do List` - a task list that just lists tasks and allows you to check them off when they are finished.
-*`To-Do List` - a more advanced task list that has options for adding short descriptions, deadlines and a more detailed explanation to the task. On this list if you click on a task name it will open up the details you have given that task.
+*`Dictionary` - a searchable and editable dictionary
+*`Manage Table of Contents` - a TOC manager for tiddlywiki
+*`Minimal Task List` - a task list that just lists tasks and allows you to check them off when they are finished.
+*`Quick Notes` - a simple searchable notepad
+*`Task List` - a more advanced task list that has options for adding short descriptions, deadlines and a more detailed explanation to the task. On this list if you click on a task name it will open up the details you have given that task.
 
 !!What do these words mean?
 
@@ -6337,7 +6395,7 @@ Find the tiddler that you want to move in the table of contents and click the `U
 &lt;/$set&gt;</pre>
 </div>
 <div created="20141204050605595" modified="20141206180802021" no_edit="true" tags="Dashboard" title="Minimal Task List">
-<pre>&lt;$edit-text tiddler='$:/state/Basic Task List' field='task_name' width=70 placeholder='Task Name'/&gt;&lt;$button&gt;New Task
+<pre>&lt;$edit-text tiddler='$:/state/Basic Task List' field='task_name' class='tc-edit-texteditor' placeholder='Task Name'/&gt;&lt;$button&gt;New Task
 &lt;$action-setfield $tiddler={{$:/state/Basic Task List!!task_name}} tags='task'/&gt;
 &lt;$action-setfield $tiddler='$:/state/Basic Task List' task_name=''/&gt;
 &lt;/$button&gt;
@@ -6386,8 +6444,9 @@ Find the tiddler that you want to move in the table of contents and click the `U
 &lt;$button&gt;Create Contact
 &lt;$action-setfield $tiddler=&lt;&lt;getFullName&gt;&gt; first_name={{ContactTemp!!firstname}} last_name={{ContactTemp!!lastname}} nick_name={{ContactTemp!!nickname}} personal_email_address={{ContactTemp!!personalemailaddress}} work_email_address={{ContactTemp!!workemailaddress}} other_email_address={{ContactTemp!!otheremailaddress}} home_phone_number={{ContactTemp!!homephonenumber}} work_phone_number={{ContactTemp!!workphonenumber}} cell_phone_number={{ContactTemp!!cellphonenumber}} street_address={{ContactTemp!!streetaddress}} country={{ContactTemp!!country}} state_or_provence={{ContactTemp!!stateprovence}} zip_code={{ContactTemp!!zipcode}} city={{ContactTemp!!city}} blurb={{ContactTemp!!blurb}} group={{ContactTemp!!group}} tags=&quot;Contacts&quot;/&gt;
 &lt;$action-setfield $tiddler=ContactTemp firstname=&quot;&quot; lastname=&quot;&quot; nickname=&quot;&quot; personalemailaddress=&quot;&quot; workemailaddress=&quot;&quot; otheremailaddress=&quot;&quot; homephonenumber=&quot;&quot; workphonenumber=&quot;&quot; cellphonenumber=&quot;&quot; streetaddress=&quot;&quot; country=&quot;&quot; stateprovence=&quot;&quot; zipcode=&quot;&quot; city=&quot;&quot; blurb=&quot;&quot;/&gt;
-&lt;!--
-&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&lt;&lt;getFullName&gt;&gt; first_name={{ContactTemp!!firstName}} last_name={{ContactTemp!!lastName}} nick_name={{ContactTemp!!nickName}} personal_email_address={{ContactTemp!!personalEmailAddress}} work_email_address={{ContactTemp!!workEmailAddress}} other_email_address={{ContactTemp!!otherEmailAddress}} home_phone_number={{ContactTemp!!homePhoneNumber}} work_phone_number={{ContactTemp!!workPhoneNumber}} cell_phone_number={{ContactTemp!!cellPhoneNumber}} street_address={{ContactTemp!!streetAddress}} country={{ContactTemp!!country}} state_or_provence={{ContactTemp!!stateProvence}} zip_code={{ContactTemp!!zipCode}} city={{ContactTemp!!city}} blurb={{ContactTemp!!blurb}} group={{ContactTemp!!group}} tags=&quot;Contacts&quot;/&gt; --&gt;
+&lt;/$button&gt;
+&lt;$button&gt;Clear Form
+&lt;$action-setfield $tiddler=ContactTemp firstname=&quot;&quot; lastname=&quot;&quot; nickname=&quot;&quot; personalemailaddress=&quot;&quot; workemailaddress=&quot;&quot; otheremailaddress=&quot;&quot; homephonenumber=&quot;&quot; workphonenumber=&quot;&quot; cellphonenumber=&quot;&quot; streetaddress=&quot;&quot; country=&quot;&quot; stateprovence=&quot;&quot; zipcode=&quot;&quot; city=&quot;&quot; blurb=&quot;&quot;/&gt;
 &lt;/$button&gt;
 &lt;/$fieldmangler&gt;
 &lt;/$set&gt;
@@ -6398,7 +6457,7 @@ Find the tiddler that you want to move in the table of contents and click the `U
 <pre>!!Step 1 - ''Give the tiddler a name'' 
 
 ---
-&lt;$edit-text tiddler='$:/state/NewTiddlerForm' field='name_temp' placeholder='Tiddler Name' size=70/&gt;&lt;br&gt;
+&lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTiddlerForm' field='name_temp' placeholder='Tiddler Name'/&gt;&lt;br&gt;
 
 !!Step 2 - ''Fill in tiddler text''
 
@@ -6406,14 +6465,14 @@ Find the tiddler that you want to move in the table of contents and click the `U
 You can use any WikiText here, see [[Wiki Formatting - text, tables, etc.]] for some easy examples of text formatting. 
 You can resize the exiting field by clicking and dragging the lower right corner.
 
-&lt;$edit-text tiddler='$:/state/NewTiddlerForm' field='text' placeholder='Tiddler Text' size=10/&gt;&lt;br&gt;
+&lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTiddlerForm' field='text' placeholder='Tiddler Text'/&gt;&lt;br&gt;
 
 !!Step 3 - ''Give the tiddler a description'' (optional)
 
 ---
 This can be used as a short description or summary of what each tiddler is. It can be useful in lists.
 
-&lt;$edit-text tiddler='$:/state/NewTiddlerForm' field='description' placeholder='Tiddler Description' size=70/&gt;&lt;br&gt;
+&lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTiddlerForm' field='description' placeholder='Tiddler Description'/&gt;&lt;br&gt;
 
 !!Step 4 - ''Add a tag or tags to the tiddler'' (optional)
 
@@ -6462,6 +6521,9 @@ Press this button and the tiddler will be created and opened so you can view it.
 &lt;$action-navigate $to={{$:/state/NewTiddlerForm!!name_temp}}/&gt;
 &lt;$action-setfield $tiddler='$:/state/NewTiddlerForm' name_temp='' text='' description='' tags=''/&gt;
 &lt;/$button&gt;
+&lt;$button&gt;Clear Form
+&lt;$action-setfield $tiddler='$:/state/NewTiddlerForm' name_temp='' text='' description='' tags=''/&gt;
+&lt;/$button&gt;
 </pre>
 </div>
 <div created="20141204020338680" modified="20141206181221933" no_edit="true" tags="" title="NewTaskButton">
@@ -6475,20 +6537,71 @@ Press this button and the tiddler will be created and opened so you can view it.
 &lt;$action-setfield $tiddler='$:/state/NewTask' new_task_name='' due_date='' description='' text=''/&gt;
 &lt;/$button&gt;
 &lt;br&gt;
-Task Title: &lt;$edit-text tiddler='$:/state/NewTask' field='new_task_name' size=70 placeholder='Task Title'/&gt;&lt;br&gt;
-Due Date: &lt;$edit-text tiddler='$:/state/NewTask' field='due_date' size=70 placeholder='Due Date'/&gt;&lt;br&gt;
-Description: &lt;$edit-text tiddler='$:/state/NewTask' field='description' size=70 placeholder='Description'/&gt;&lt;br&gt;
+Task Title: &lt;$edit-text class='tc-edit-texteditor'  tiddler='$:/state/NewTask' field='new_task_name' placeholder='Task Title'/&gt;&lt;br&gt;
+Due Date: &lt;$edit-text class='tc-edit-texteditor'  tiddler='$:/state/NewTask' field='due_date' placeholder='Due Date'/&gt;&lt;br&gt;
+Description: &lt;$edit-text class='tc-edit-texteditor'  tiddler='$:/state/NewTask' field='description' placeholder='Description'/&gt;&lt;br&gt;
 &lt;$reveal type='nomatch' state='$:/state/NewTaskDetails' text='show'&gt;
 &lt;$button set='$:/state/NewTaskDetails' setTo='show'&gt;Add Details&lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal type='match' state='$:/state/NewTaskDetails' text='show'&gt;
 Details: (&lt;$button set='$:/state/NewTaskDetails' setTo='noshow'&gt;Cancel&lt;/$button&gt;)&lt;br&gt;
-&lt;$edit-text tiddler='$:/state/NewTask' field='text' size=70 placeholder='Task Details'/&gt;
+&lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/NewTask' field='text' placeholder='Task Details'/&gt;
 &lt;/$reveal&gt;
 &lt;/$reveal&gt;</pre>
 </div>
 <div created="20141204033141546" modified="20141206181237729" no_edit="true" tags="" title="NewTaskButtonSettings">
 <pre>This is going to control the configuration for the upgraded task list. It should control both the Create New Task button and how the tasks are displayed (normal list, in groups, show/hide completed tasks, show/hide a delete task button, etc.)</pre>
+</div>
+<div created="20141217001538052" modified="20141217014925474" no_edit="true" tags="" title="Note List">
+<pre>\define thisSearchMacro()
+&lt;ul&gt;
+&lt;$list filter=&quot;[tag[Note]regexp:title[(?i)$(thisSearch)$]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+\end
+
+\define thisEditMacro()
+&lt;ul&gt;
+&lt;$list filter=&quot;[tag[Note]regexp:title[(?i)$(thisSearch)$]]&quot;&gt;
+&lt;$set name=thisItem value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;li&gt;&lt;$button message='tm-delete-tiddler' param=&lt;&lt;currentTiddler&gt;&gt;&gt;{{$:/core/images/delete-button}}&lt;/$button&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+\end
+
+\define thisRegEx()
+$(thisSearch)$(?i)
+\end
+
+Search: &lt;$edit-text tiddler='$:/temp/notelist' field='search'/&gt;(
+&lt;$reveal type='nomatch' state='$:/state/notelist/editreveal' text='edit'&gt;
+&lt;$button set='$:/state/notelist/editreveal' setTo='edit'&gt;Edit List&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/notelist/editreveal' text='edit'&gt;
+&lt;$button set='$:/state/notelist/editreveal' setTo='noedit'&gt;Done Editing&lt;/$button&gt;
+&lt;/$reveal&gt;)&lt;br&gt;
+&lt;$reveal type='nomatch' state='$:/state/notelist/editreveal' text='edit'&gt;
+Type in the search box to search by name
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/notelist/editreveal' text='edit'&gt;
+Click on the trashcan icon to remove a note
+&lt;/$reveal&gt;
+&lt;$set name='thisSearch' value={{$:/temp/notelist!!search}}&gt;
+&lt;$reveal type='nomatch' state='$:/state/notelist/editreveal' text='edit'&gt;
+&lt;&lt;thisSearchMacro&gt;&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/notelist/editreveal' text='edit'&gt;
+&lt;&lt;thisEditMacro&gt;&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;</pre>
+</div>
+<div created="20141217001324855" modified="20141217001324856" tags="Note" title="Note Name">
+<pre>Note Text</pre>
+</div>
+<div created="20141217001437415" modified="20141217014943477" no_edit="true" tags="Dashboard" title="Quick Notes">
+<pre>&lt;&lt;tabs &quot;[[Write Quick Note]] [[Note List]]&quot; [[Write Quick Note]]&gt;&gt;</pre>
 </div>
 <div created="20141204205959063" footer="" modified="20141209213124307" no_edit="true" subtitle="Remove the Introduction?" tags="" title="RemoveIntroMessageModal">
 <pre>Are you sure you want to remove the introduction message? Even if you remove it here you can still view it by going to the `Table of Contents` tab and clicking on it there.
@@ -6655,6 +6768,27 @@ Select New Location: &lt;$select tiddler='$:/state/temporaryTocLocation'&gt;
 
 &lt;$list filter=[tag[Wiki Settings]]&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20141216223509853" modified="20141217014933961" no_edit="true" title="Write Quick Note">
+<pre>\define thisTempTiddler(stateNumber)
+$:/temp/$(someName)$$stateNumber$
+\end
+
+&lt;$set name=someName value=&lt;&lt;qualify&gt;&gt;&gt;
+&lt;$tiddler tiddler=&lt;&lt;thisTempTiddler&gt;&gt;&gt;
+Note Name: &lt;$edit-text tiddler=&lt;&lt;thisTempTiddler&gt;&gt; field='name' class='tc-edit-texteditor' placeholder='Note Name'/&gt;
+&lt;$edit-text tiddler=&lt;&lt;thisTempTiddler&gt;&gt; field='text' class='tc-edit-texteditor' placeholder='Note Text'/&gt;
+&lt;$button&gt;Create Note
+&lt;$action-setfield $tiddler={{!!name}} $field='text' $value={{!!text}} tags='Note'/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;thisTempTiddler&gt;&gt; $field='text' $value=''/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;thisTempTiddler&gt;&gt; $field='name' $value=''/&gt;
+&lt;/$button&gt;
+&lt;$button&gt;Reset
+&lt;$action-setfield $tiddler=&lt;&lt;thisTempTiddler&gt;&gt; $field='text' $value=''/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;thisTempTiddler&gt;&gt; $field='name' $value=''/&gt;
+&lt;/$button&gt;
+&lt;/$tiddler&gt;
+&lt;/$set&gt;</pre>
 </div>
 
 </div>
