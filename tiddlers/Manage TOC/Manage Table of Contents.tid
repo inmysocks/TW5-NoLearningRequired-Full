@@ -11,6 +11,6 @@ You can use this to rearrange the table of contents displayed above under the `T
 Find the tiddler that you want to move in the table of contents and click the `Update Location` button next to its name. This will open up a small drop down that will list the current location of the tiddler in the table of contents and a dropdown menu you can use to select the new location. Once you have selected the new location press the `Move Tiddler` button. The tiddler will be immediately moved to the new location in the table of contents, so you will need to look in the new location to find it.
 
 <$set name='above' value=Contents>
-<$list filter='[tag[Contents]]' template='TOCArrangeTemplate'>
+<$list filter='[plugintiddlers[]tag[Contents]][tag[Contents]]' template='TOCArrangeTemplate'>
 </$list>
 </$set>

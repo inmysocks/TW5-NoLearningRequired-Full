@@ -42,7 +42,7 @@ New Tag Name: <$edit-text tiddler='$:/state/NewTiddlerForm' field='tag_temp' pla
 </$fieldmangler><br>
 </$reveal>
 <$reveal type='match' state='$:/state/NewTiddlerForm!!add_or_create_tag' text='existing'>
-Tag to add: <$select tiddler='$:/state/NewTiddlerForm' field='tag_to_add'>
+Tag to add: <$select tiddler='$:/state/NewTiddlerForm' field='tag_temp'>
 <$list filter='[tags[]sort[title]]'>
 <option><$view field='title'/></option>
 </$list>

@@ -6,4 +6,4 @@ settings_tiddler: BasicFinishedTaskDisplayTemplateSettings
 tags: Templates ToDoEntryDisplayTemplate
 title: BasicFinishedEntryDisplayTemplate
 
-<$checkbox tag="done"> ~~<$link to={{!!title}}><$view field="title"/></$link>~~</$checkbox>
+<$checkbox tag="done"> ~~<$link to={{!!title}}><$view field="title"/></$link>~~</$checkbox><br>

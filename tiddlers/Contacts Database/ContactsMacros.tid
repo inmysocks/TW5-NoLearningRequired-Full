@@ -112,7 +112,7 @@ About (<$button set="$:/state/$(tiddlerName)$About" setTo="show">Edit</$button>)
 
 About (<$button set="$:/state/$(tiddlerName)$About" setTo="hide">Edit</$button>): <br>
 
-<$edit-text tiddler="$(tiddlerName)$" field="text" size="120"/> <br>
+<$edit-text tiddler="$(tiddlerName)$" field="text" size="120" class='tc-edit-texteditor'/> <br>
 
 </$reveal>
 

@@ -8,8 +8,4 @@ title: RemoveIntroMessageModal
 
 Are you sure you want to remove the introduction message? Even if you remove it here you can still view it by going to the `Table of Contents` tab and clicking on it there.
 
-<$fieldmangler tiddler=Introduction><$button>
-<$action-sendmessage $message='tm-remove-tag' $param=Dashboard/>
-<$action-sendmessage $message='tm-close-tiddler'/>
-<$action-setfield $tiddler='$:/temp/toc/selectedTiddler' text=''/>
-Yes</$button></$fieldmangler> <$button message='tm-close-tiddler'>No</$button>
+<$fieldmangler tiddler=Introduction><$button><$action-sendmessage $message='tm-remove-tag' $param=Dashboard/><$action-sendmessage $message='tm-close-tiddler'/><$action-sendmessage $message='tm-delete-tiddler' $param='$:/temp/toc/selectedTiddler'/>Yes</$button></$fieldmangler> <$button message='tm-close-tiddler'>No</$button>

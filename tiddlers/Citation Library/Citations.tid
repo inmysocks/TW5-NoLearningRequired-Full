@@ -7,13 +7,13 @@ tags: Dissertation
 title: Citations
 
 \define getSubject()
-[subject[$(subject)$]]
+[plugintiddlers[]subject[$(subject)$]][subject[$(subject)$]]
 \end
 
 List citations by subject:
 
 Subject: <$select tiddler='$:/state/viewcitation/subject' default='No Subject'>
-<$list filter='[tag[CitationsSubject]]'>
+<$list filter='[plugintiddlers[]tag[CitationsSubject]][tag[CitationsSubject]]'>
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>
 </$select>
