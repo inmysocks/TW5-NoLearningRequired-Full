@@ -129,8 +129,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -153,12 +151,6 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
-<li>$:/state/tab--1963855381</li>
-
-<li>$:/state/tab-1749438307</li>
-
-<li>$:/state/tab/sidebar--1835078512</li>
-
 <li>$:/state/viewcitation/subject</li>
 
 <li>$:/StoryList</li>
@@ -170,6 +162,10 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/seamless</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>Add Bookmark</li>
+
+<li>Add Books</li>
 
 <li>Add Citation</li>
 
@@ -187,9 +183,23 @@ Error message and password prompt
 
 <li>BasicTaskListTemplateSettings</li>
 
+<li>Book List</li>
+
+<li>BookmarkDisplayTemplate</li>
+
+<li>Bookmarks</li>
+
+<li>Bookmarks by Tags</li>
+
+<li>Bookmarks List</li>
+
+<li>Bookmarks Settings</li>
+
 <li>Citation Library</li>
 
 <li>Citations</li>
+
+<li>Citations Macros</li>
 
 <li>Contact Group Selector</li>
 
@@ -215,6 +225,8 @@ Error message and password prompt
 
 <li>Dictionary</li>
 
+<li>Edit Citations</li>
+
 <li>Edit Tiddler Form</li>
 
 <li>Example Contact (Alias)</li>
@@ -229,8 +241,6 @@ Error message and password prompt
 
 <li>Example Tiddler</li>
 
-<li>Expression Tiddler</li>
-
 <li>GroupContactListGroupTemplate</li>
 
 <li>GroupContactListTemplate</li>
@@ -239,21 +249,21 @@ Error message and password prompt
 
 <li>Introduction</li>
 
+<li>Library Tracker</li>
+
+<li>Library Tracker Settings</li>
+
 <li>M2M Service Platforms: Survey, Issues, and Enabling Technologies</li>
 
 <li>Machine-to-machine Communication</li>
+
+<li>Manage Books</li>
 
 <li>Manage Table of Contents</li>
 
 <li>Minimal Task List</li>
 
 <li>New Contact Form</li>
-
-<li>New Tiddler</li>
-
-<li>New Tiddler 1</li>
-
-<li>New Tiddler 2</li>
 
 <li>New Tiddler Form</li>
 
@@ -273,8 +283,6 @@ Error message and password prompt
 
 <li>SimpleContactListTemplate</li>
 
-<li>Summation Daemon Configuration</li>
-
 <li>Task List</li>
 
 <li>Task List Settings</li>
@@ -283,7 +291,15 @@ Error message and password prompt
 
 <li>TOCArrangeTemplate2</li>
 
+<li>Upgrade Citations from 0.1.x to 0.2.x</li>
+
 <li>Upgraded Task List</li>
+
+<li>View Citation</li>
+
+<li>View Citation by Subject</li>
+
+<li>View Citation by Title</li>
 
 <li>Wiki Settings</li>
 
@@ -299,10 +315,10 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div modified="20150111172113686" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/close">
+<div modified="20141206181756775" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/close">
 <pre>hide</pre>
 </div>
-<div modified="20150111172112655" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit">
+<div modified="20141206181755903" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/edit">
 <pre>hide</pre>
 </div>
 <div modified="20141206181754890" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/more-tiddler-actions">
@@ -3933,6 +3949,12 @@ Error message and password prompt
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
         },
+        &quot;$:/plugins/inmysocks/MathyThing/action-increment.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/inmysocks/MathyThing/action-increment.js\ntype: application/javascript\nmodule-type: widget\n\nAction widget that increments a number in a field.\n\n\\*/\n\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar IncrementWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nIncrementWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nIncrementWidget.prototype.render = function(parent,nextSibling) {\n\tthis.computeAttributes();\n\tthis.execute();\n};\n\n/*\nCompute the internal state of the widget\n*/\nIncrementWidget.prototype.execute = function() {\n\tthis.actionTiddler = this.getAttribute(\&quot;$tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));\n\tthis.actionField = this.getAttribute(\&quot;$field\&quot;,\&quot;inc_field\&quot;);\n\tthis.actionIndex = this.getAttribute(\&quot;$index\&quot;);\n\tthis.padLength = this.getAttribute(\&quot;$length\&quot;,\&quot;0\&quot;);\n\tthis.prefixValue = this.getAttribute(\&quot;$prefix\&quot;)\n\tthis.initialValue = this.getAttribute(\&quot;$initial\&quot;,\&quot;0\&quot;)\n\n\tvar incVal = this.getAttribute(\&quot;$increment\&quot;,1);\n\tvar tiddler = this.wiki.getTiddler(this.actionTiddler);\n\tvar fieldString = tiddler.getFieldString(this.actionField);\n\n\t//If there is no value in the field create the initial value, with a prefix and zero padding if needed\n\tif ( fieldString ) {\n\t} else if ( this.prefixValue ) {\n\t\tif ( this.padLength ) {\n\t\t\tfieldString = this.prefixValue+$tw.utils.pad(this.initialValue,this.padLength);\n\t\t} else {\n\t\t\tfieldString = this.prefixValue+this.initialValue;\n\t\t}\n\t} else if ( this.padLength ) {\n\t\t\tfieldString = $tw.utils.pad(this.initialValue,this.padLength);\n\t} else {\n\t\t\tfieldString = this.initialValue;\n\t}\n\t\n\t//Get the current numeric value in the field by removing the prefix if one is given\n\tif ( this.prefixValue ) {\n\t\tvar currentValue = fieldString.slice(this.prefixValue.length,fieldString.length);\n\t} else {\n\t\tvar currentValue = fieldString;\n\t}\n\n\t//If either the existing value or the increment value are not numbers leave the field alone, otherwise increment the value.\n\tif ( !isNaN(parseFloat(currentValue)) &amp;&amp; isFinite(currentValue) &amp;&amp; !isNaN(parseFloat(incVal)) &amp;&amp; isFinite(incVal) ) { \n\t\tvar output = Number(currentValue) + Number(incVal);\n\t\tif ( this.padLength ) {\n\t\t\tthis.actionValue = $tw.utils.pad(output,this.padLength)\n\t\t} else {\n\t\t\tthis.actionValue = output;\n\t\t} \n\t\tif ( this.prefixValue ) {\n\t\t\tthis.actionValue = String(this.prefixValue)+String(this.actionValue);\n\t\t}\n\t} else {\n\t\tthis.actionValue = String(currentValue);\n\t}\n};\n\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nIncrementWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;$tiddler\&quot;] || changedAttributes[\&quot;$field\&quot;] || changedAttributes[\&quot;$index\&quot;] || changedAttributes[\&quot;$increment\&quot;] || changedAttributes[\&quot;$length\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nIncrementWidget.prototype.invokeAction = function(triggeringWidget,event) {\n\tif(typeof this.actionValue === \&quot;string\&quot;) {\n\t\tthis.wiki.setText(this.actionTiddler,this.actionField,this.actionIndex,this.actionValue);\t\t\n\t}\n\treturn true; // Action was invoked\n};\n\nexports[\&quot;action-increment\&quot;] = IncrementWidget;\n\n})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/inmysocks/MathyThing/action-increment.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;
+        },
         &quot;$:/core/modules/widgets/action-navigate.js&quot;: {
             &quot;text&quot;: &quot;/*\\\ntitle: $:/core/modules/widgets/action-navigate.js\ntype: application/javascript\nmodule-type: widget\n\nAction widget to navigate to a tiddler\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\n\nvar NavigateWidget = function(parseTreeNode,options) {\n\tthis.initialise(parseTreeNode,options);\n};\n\n/*\nInherit from the base widget class\n*/\nNavigateWidget.prototype = new Widget();\n\n/*\nRender this widget into the DOM\n*/\nNavigateWidget.prototype.render = function(parent,nextSibling) {\n\tthis.computeAttributes();\n\tthis.execute();\n};\n\n/*\nCompute the internal state of the widget\n*/\nNavigateWidget.prototype.execute = function() {\n\tthis.actionTo = this.getAttribute(\&quot;$to\&quot;);\n\tthis.actionScroll = this.getAttribute(\&quot;$scroll\&quot;);\n};\n\n/*\nRefresh the widget by ensuring our attributes are up to date\n*/\nNavigateWidget.prototype.refresh = function(changedTiddlers) {\n\tvar changedAttributes = this.computeAttributes();\n\tif(changedAttributes[\&quot;$to\&quot;] || changedAttributes[\&quot;$scroll\&quot;]) {\n\t\tthis.refreshSelf();\n\t\treturn true;\n\t}\n\treturn this.refreshChildren(changedTiddlers);\n};\n\n/*\nInvoke the action associated with this widget\n*/\nNavigateWidget.prototype.invokeAction = function(triggeringWidget,event) {\n\tvar bounds = triggeringWidget &amp;&amp; triggeringWidget.getBoundingClientRect &amp;&amp; triggeringWidget.getBoundingClientRect(),\n\t\tsuppressNavigation = event.metaKey || event.ctrlKey || (event.button === 1);\n\tif(this.actionScroll === \&quot;yes\&quot;) {\n\t\tsuppressNavigation = false;\n\t} else if(this.actionScroll === \&quot;no\&quot;) {\n\t\tsuppressNavigation = true;\n\t}\n\tthis.dispatchEvent({\n\t\ttype: \&quot;tm-navigate\&quot;,\n\t\tnavigateTo: this.actionTo === undefined ? this.getVariable(\&quot;currentTiddler\&quot;) : this.actionTo,\n\t\tnavigateFromTitle: this.getVariable(\&quot;storyTiddler\&quot;),\n\t\tnavigateFromNode: triggeringWidget,\n\t\tnavigateFromClientRect: bounds &amp;&amp; { top: bounds.top, left: bounds.left, width: bounds.width, right: bounds.right, bottom: bounds.bottom, height: bounds.height\n\t\t},\n\t\tnavigateSuppressNavigation: suppressNavigation\n\t});\n\treturn true; // Action was invoked\n};\n\nexports[\&quot;action-navigate\&quot;] = NavigateWidget;\n\n})();\n&quot;,
             &quot;title&quot;: &quot;$:/core/modules/widgets/action-navigate.js&quot;,
@@ -5534,11 +5556,6 @@ Error message and password prompt
 <pre>Dashboard
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[Summation Daemon Configuration]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -5569,22 +5586,13 @@ Error message and password prompt
 <div add_or_create_tag="create" created="20141217020105675" modified="20141217020732119" title="$:/state/NewTiddlerForm">
 <pre></pre>
 </div>
-<div modified="20150111172100422" title="$:/state/sidebar">
+<div modified="20141206184954316" title="$:/state/sidebar">
 <pre>no</pre>
-</div>
-<div modified="20150110235200560" title="$:/state/tab--1963855381">
-<pre>$:/core/ui/ControlPanel/Toolbars</pre>
-</div>
-<div modified="20150111172105277" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Appearance</pre>
-</div>
-<div modified="20150110231634918" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div modified="20141210171802301" title="$:/state/viewcitation/subject">
 <pre>Example Subject</pre>
 </div>
-<div list="$:/ControlPanel Dashboard" title="$:/StoryList">
+<div list="Dashboard" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -5592,11 +5600,11 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;$:/info/browser&quot;: {
             &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;yes&quot;
+            &quot;text&quot;: &quot;no&quot;
         },
         &quot;$:/info/node&quot;: {
             &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;no&quot;
+            &quot;text&quot;: &quot;yes&quot;
         }
     }
 }</pre>
@@ -5682,14 +5690,206 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20141205193053640" creator="inmysocks" modified="20141209013200270" modifier="inmysocks" no_edit="true" tags="Dissertation" title="Add Citation">
-<pre>\define makeCitationText()
+<div created="20150108203716298" creator="inmysocks" modified="20150208222912228" modifier="inmysocks" title="Add Bookmark">
+<pre>\define thisTagSelect()
+&lt;$select tiddler='$:/state/Bookmarks' field='selected_tag'&gt;
+&lt;$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]regexp:[(?i)$(tagSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
 
-Subject: {{!!subject}}&lt;br&gt;
+URL: &lt;$edit-text tiddler='$:/temp/Bookmarks/NewBookmark' field=url class='tc-edit-texteditor'/&gt;
+Name: &lt;$edit-text tiddler='$:/temp/Bookmarks/NewBookmark' field=name class='tc-edit-texteditor'/&gt;
+Note: &lt;$edit-text tiddler='$:/temp/Bookmarks/NewBookmark' field=note class='tc-edit-texteditor'/&gt;
+Tags (it will always be tagged with `Bookmark` by default):&lt;br&gt;
+&lt;$reveal type=match state='$:/state/Bookmarks!!add_or_create_tag' text='create'&gt;
+New Tag: &lt;$edit-text tiddler='$:/temp/Bookmarks' field='tag_temp' placeholder='New Tag'/&gt;
+&lt;$reveal type=nomatch state='$:/temp/Bookmarks!!tag_temp' text=''&gt;
+&lt;$button&gt;Create Tag
+&lt;$action-setfield $tiddler='$:/data/Bookmarks/BookmarkTags' $index={{$:/temp/Bookmarks!!tag_temp}} $value=1/&gt;
+&lt;$action-setfield $tiddler='$:/temp/Bookmarks' $field='tag_temp' $value=''/&gt;
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=match state='$:/temp/Bookmarks!!tag_temp' text=''&gt;
+&lt;$button&gt;Create Tag&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$button set='$:/state/Bookmarks!!add_or_create_tag' setTo='nocreate'&gt;Done&lt;/$button&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/state/Bookmarks!!add_or_create_tag' text='create'&gt;
+Tag to add: 
+&lt;$set name=tagSearch value={{$:/temp/Bookmarks!!narrow_tag_select}}&gt;
+&lt;&lt;thisTagSelect&gt;&gt;
+&lt;/$set&gt;
+&lt;$edit-text tiddler='$:/temp/Bookmarks' field='narrow_tag_select' placeholder='Narrow Tag List'/&gt;
+&lt;$fieldmangler tiddler='$:/temp/Bookmarks/NewBookmark'&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler='$:/temp/Bookmarks/NewBookmark' $field='dummy_field' value='1'/&gt;
+&lt;$action-sendmessage $message='tm-add-tag' $param={{$:/state/Bookmarks!!selected_tag}}/&gt;Add Tag
+&lt;/$button&gt;(&lt;$button set='$:/state/Bookmarks!!add_or_create_tag' setTo='create'&gt;New Tag&lt;/$button&gt;)
+&lt;/$fieldmangler&gt;
+&lt;br&gt;
+&lt;/$reveal&gt;
+List of current tags:&lt;br&gt;
+&lt;$fieldmangler tiddler='$:/temp/Bookmarks/NewBookmark'&gt;
+&lt;$list filter='[[$:/temp/Bookmarks/NewBookmark]tags[]]-[[Bookmark]]'&gt;&lt;$view field='title'/&gt; &lt;$button&gt;Remove Tag&lt;$action-sendmessage $message='tm-remove-tag' $param=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$button&gt;&lt;br&gt; &lt;/$list&gt;
+&lt;/$fieldmangler&gt;
+
+&lt;$button&gt;Add Bookmark
+&lt;$action-setfield $tiddler='$:/temp/Bookmarks/NewBookmark' $field='title' $value={{$:/temp/Bookmarks/NewBookmark!!name}}/&gt;
+&lt;$action-setfield $tiddler='$:/temp/Bookmarks/NewBookmark' url='' name='' note='' tags='Bookmark'/&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div created="20141227050110053" modified="20150202040250468" title="Add Books">
+<pre>\define thisSeriesSelect()
+&lt;$select tiddler='$:/temp/newbook' field='series' default='None'&gt;
+&lt;$list filter='[[$:/data/SeriesTitles]indexes[]sort[title]regexp:[(?i)$(thisSeriesSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisGenreSelect()
+&lt;$select tiddler='$:/temp/newbook' field='genre' default='None'&gt;
+&lt;$list filter='[[$:/data/BookGenres]indexes[]sort[title]regexp:[(?i)$(thisGenreSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisAuthorSelect()
+&lt;$select tiddler='$:/temp/newbook' field='author' default='None'&gt;
+&lt;$list filter='[[$:/data/BookAuthors]indexes[]sort[title]regexp:[(?i)$(thisAuthorSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisLocationSelect()
+&lt;$select tiddler='$:/temp/newbook' field='location' default='None'&gt;
+&lt;$list filter='[[$:/data/BookLocations]indexes[]sort[title]regexp:[(?i)$(thisLocationSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisTagSelect()
+&lt;$select tiddler='$:/state/booktag' field='selected_tag'&gt;
+&lt;$list filter='[[$:/data/BookTags]indexes[]sort[title]regexp:[(?i)$(thisTagSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+Adding books:
+
+&lt;!--Title--&gt;
+Title: &lt;$edit-text tiddler='$:/state/newbook' field='book_title' class='tc-edit-texteditor' placeholder='Book Title'/&gt;
+&lt;!--End Title--&gt;
+&lt;!--Author--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_author'&gt;
+Author: &lt;$reveal state='$:/state/Library Tracker/add author' type=nomatch text='new'&gt;
+&lt;$set name=thisAuthorSearch value={{$:/state/newbook!!narrow_author_select}}&gt;
+&lt;&lt;thisAuthorSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_author_select' placeholder='Narrow Author List'/&gt; (&lt;$button set='$:/state/Library Tracker/add author' setTo='new'&gt;New Author&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add author' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_author' placeholder='Author'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/BookAuthors' $index={{$:/state/newbook!!book_author}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_author' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add author' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;!--End Author--&gt;
+&lt;!--Series--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_series'&gt;
+Series: &lt;$reveal state='$:/state/Library Tracker/add series' type=nomatch text='new'&gt;
+&lt;$set name=thisSeriesSearch value={{$:/state/newbook!!narrow_series_select}}&gt;
+&lt;&lt;thisSeriesSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_series_select' placeholder='Narrow Series List'/&gt;  (&lt;$button set='$:/state/Library Tracker/add series' setTo='new'&gt;New Series&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add series' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_series' placeholder='Series Title'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/SeriesTitles' $index={{$:/state/newbook!!book_series}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_series' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add series' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;!--End Series--&gt;
+&lt;!--Genre--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_genre'&gt;
+Genre: &lt;$reveal state='$:/state/Library Tracker/add genre' type=nomatch text='new'&gt;
+&lt;$set name=thisGenreSearch value={{$:/state/newbook!!narrow_genre_select}}&gt;
+&lt;&lt;thisGenreSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_genre_select' placeholder='Narrow Genre List'/&gt; (&lt;$button set='$:/state/Library Tracker/add genre' setTo='new'&gt;New Genre&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add genre' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_genre' placeholder='Genre'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/BookGenres' $index={{$:/state/newbook!!book_genre}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_genre' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add genre' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;!--End Genre--&gt;
+&lt;!--Location--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_location'&gt;
+Locaction: &lt;$reveal state='$:/state/Library Tracker/add location' type=nomatch text='new'&gt;
+&lt;$set name=thisLocationSearch value={{$:/state/newbook!!narrow_location_select}}&gt;
+&lt;&lt;thisLocationSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_location_select' placeholder='Narrow Location List'/&gt; (&lt;$button set='$:/state/Library Tracker/add location' setTo='new'&gt;New  Location&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add location' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_location' placeholder='Location'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/BookLocations' $index={{$:/state/newbook!!book_location}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_location' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add location' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$reveal&gt;
+&lt;!--End Location--&gt;
+
+
+&lt;!--Tags--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_tags'&gt;
+Tags (it will always be tagged with `Book` by default):&lt;br&gt;
+&lt;$reveal type=match state='$:/state/newbook!!add_or_create_tag' text='create'&gt;
+New Tag: &lt;$edit-text tiddler='$:/state/booktag' field='tag_temp' placeholder='New Tag'/&gt;
+&lt;$button&gt;Create Tag
+&lt;$action-setfield $tiddler='$:/data/BookTags' $index={{$:/state/booktag!!tag_temp}} $value=1/&gt;
+&lt;$action-setfield $tiddler='$:/state/booktag' $field='tag_temp' $value=''/&gt;
+&lt;/$button&gt;
+&lt;$button set='$:/state/newbook!!add_or_create_tag' setTo='nocreate'&gt;Done&lt;/$button&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/state/newbook!!add_or_create_tag' text='create'&gt;
+Tag to add: 
+&lt;$set name=thisTagSearch value={{$:/state/newbook!!narrow_tag_select}}&gt;
+&lt;&lt;thisTagSelect&gt;&gt;
+&lt;/$set&gt;
+&lt;$fieldmangler tiddler='$:/temp/newbook'&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message='tm-add-tag' $param={{$:/state/booktag!!selected_tag}}/&gt;Add Tag
+&lt;/$button&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='narrow_tag_select' placeholder='Narrow Tag List'/&gt;
+(&lt;$button set='$:/state/newbook!!add_or_create_tag' setTo='create'&gt;New Tag&lt;/$button&gt;)
+&lt;/$fieldmangler&gt;
+&lt;br&gt;
+&lt;/$reveal&gt;
+List of current tags:&lt;br&gt;
+&lt;$fieldmangler tiddler='$:/temp/newbook'&gt;
+&lt;$list filter='[[$:/temp/newbook]tags[]]'&gt;&lt;$view field='title'/&gt; &lt;$button&gt;Remove Tag&lt;$action-sendmessage $message='tm-remove-tag' $param=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$button&gt;&lt;br&gt; &lt;/$list&gt;
+&lt;/$fieldmangler&gt;
+&lt;/$reveal&gt;
+
+&lt;$fieldmangler tiddler={{$:/state/newbook!!book_title}}&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler='$:/temp/newbook' title={{$:/state/newbook!!book_title}}/&gt;
+&lt;$action-sendmessage $message='tm-add-tag' $param='Book'/&gt;
+&lt;$action-setfield $tiddler='$:/state/newbook' book_title=''/&gt;
+&lt;$action-setfield $tiddler='$:/temp/newbook' tags=''/&gt;
+Add Book&lt;/$button&gt;
+&lt;/$fieldmangler&gt;</pre>
+</div>
+<div created="20141205193053640" creator="inmysocks" modified="20141209013200270" modifier="inmysocks" no_edit="true" title="Add Citation">
+<pre>\define thisGetIndex()
+$:/temp/AddCitation/SubjectsList##$(ThisTiddler)$
+\end
+
+\define makeCitationText()
+
+Subjects: 
+
+&lt;ul&gt;
+&lt;$list filter='[[$(subjectsTiddler)$]indexes[]]'&gt;
+&lt;li&gt;&lt;$view field='title'/&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
 
 Abstract:&lt;br&gt;
 
-&lt;$view tiddler='$(abstractTiddler)$' field='text'/&gt;
+&lt;$view tiddler=&quot;&quot;&quot;$(abstractTiddler)$&quot;&quot;&quot; field='text'/&gt;
 
 Bibtex:
 
@@ -5702,19 +5902,19 @@ $(bibTex)$
 \end
 
 \define makeAbstractTiddler()
-
 $(tiddlerTitle)$_Abstract
-
 \end
 
 \define makeBibTexTiddler()
-
 $(tiddlerTitle)$_BibTex
+\end
 
+\define makeSubjectsTiddler()
+$(tiddlerTitle)$_Subjects
 \end
 
 \define getBibTex()
-&lt;$view tiddler='$(bibTexTiddler)$' field='text'/&gt;
+&lt;$macrocall $name=monoSpacedCodeBlock src={{$(bibTexTiddler)$}}/&gt;
 \end
 
 Paper Title: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcitation' field='paper_title' placeholder='papertitle' size=70/&gt;&lt;br&gt;
@@ -5726,6 +5926,7 @@ Bibtex Citation:&lt;br&gt; &lt;$edit-text class='tc-edit-texteditor' tiddler='$:
 &lt;$set name=tiddlerTitle value={{$:/state/addcitation!!paper_title}}&gt;
 &lt;$set name=abstractTiddler value=&lt;&lt;makeAbstractTiddler&gt;&gt;&gt;
 &lt;$set name=bibTexTiddler value=&lt;&lt;makeBibTexTiddler&gt;&gt;&gt;
+&lt;$set name=subjectsTiddler value=&lt;&lt;makeSubjectsTiddler&gt;&gt;&gt;
 &lt;$set name=bibTex value=&lt;&lt;getBibTex&gt;&gt;&gt;
 
 &lt;$reveal type='nomatch' state='$:/state/addcition/addsubject' text='newsubject'&gt;
@@ -5734,29 +5935,48 @@ Subject: &lt;$select tiddler='$:/state/addcitation/subject' default='No Subject'
 &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
+&lt;$button&gt;Add Subject
+&lt;$action-setfield $tiddler='$:/temp/AddCitation/SubjectsList' $index={{$:/state/addcitation/subject}} $value='1'/&gt;
+&lt;/$button&gt;
 &lt;$button set='$:/state/addcition/addsubject' setTo='newsubject'&gt;New Subject&lt;/$button&gt;
 &lt;/$reveal&gt;
 &lt;$reveal type='match' state='$:/state/addcition/addsubject' text='newsubject'&gt;
 Subject Name: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcition/addsubject' field='newsubjectname'/&gt;&lt;br&gt;
-&lt;$button&gt;Add Subject&lt;$action-setfield $tiddler={{$:/state/addcition/addsubject!!newsubjectname}} tags=CitationsSubject/&gt;
+&lt;$button&gt;Add Subject
+&lt;$action-setfield $tiddler={{$:/state/addcition/addsubject!!newsubjectname}} tags=CitationsSubject/&gt;
 &lt;$action-setfield $tiddler='$:/state/addcition/addsubject' $field='newsubjectname' $value=''/&gt;
 &lt;/$button&gt;
 &lt;$button set='$:/state/addcition/addsubject' setTo='nonewsubject'&gt;Done&lt;/$button&gt;
 &lt;/$reveal&gt;
 
+Current Subjects:
+
+&lt;ul&gt;
+&lt;$list filter='[[$:/temp/AddCitation/SubjectsList]indexes[]]'&gt;
+&lt;$set name=ThisTiddler value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;li&gt;&lt;$view field='title'/&gt; &lt;$button set=&lt;&lt;thisGetIndex&gt;&gt;&gt;Remove Subject&lt;/$button&gt;&lt;/li&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+
 &lt;$button&gt;Add Citation
 &lt;$action-setfield $tiddler=&lt;&lt;abstractTiddler&gt;&gt; text={{$:/state/addcitation}}/&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;bibTexTiddler&gt;&gt; text={{$:/state/addcitation/bibtex}}/&gt;
+&lt;$action-setfield $tiddler='$:/temp/AddCitation/SubjectsList' $field='title' $value=&lt;&lt;makeSubjectsTiddler&gt;&gt;/&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;tiddlerTitle&gt;&gt; text=&lt;&lt;makeCitationText&gt;&gt;/&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;tiddlerTitle&gt;&gt; tags='Citations'/&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;tiddlerTitle&gt;&gt; $field='subject' $value={{$:/state/addcitation/subject}}/&gt;
-&lt;$action-setfield $tiddler='$:/state/addcitation' text=''/&gt;&lt;$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/&gt;&lt;$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/&gt;&lt;/$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;tiddlerTitle&gt;&gt; subject_tiddler=&lt;&lt;subjectsTiddler&gt;&gt; bibtex_tiddler=&lt;&lt;bibTexTiddler&gt;&gt; abstract_tiddler=&lt;&lt;abstractTiddler&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler='$:/state/addcitation' text=''/&gt;&lt;$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/&gt;&lt;$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/&gt;
+&lt;/$button&gt;
 &lt;$button&gt;Clear Form
 &lt;$action-setfield $tiddler='$:/state/addcitation' text=''/&gt;
 &lt;$action-setfield $tiddler='$:/state/addcitation' $field='paper_title' $value=''/&gt;
 &lt;$action-setfield $tiddler='$:/state/addcitation/bibtex' text=''/&gt;
+&lt;$action-setfield $tiddler=&quot;&quot;&quot;I hope you don't name a tiddler this&quot;&quot;&quot; $field='title' $value=&quot;&quot;&quot;$:/temp/AddCitation/SubjectsList&quot;&quot;&quot;/&gt;
 &lt;/$button&gt;
 
+&lt;/$set&gt;
+&lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;</pre>
@@ -5785,31 +6005,279 @@ Subject Name: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/addcit
 <div created="20141204050410657" modified="20141206181212397" no_edit="true" title="BasicTaskListTemplateSettings">
 <pre></pre>
 </div>
-<div created="20141205200355907" modified="20141206180629653" no_edit="true" tags="Dashboard" title="Citation Library">
-<pre>&lt;&lt;tabs &quot;Citations [[Add Citation]]&quot; Citations&gt;&gt;</pre>
-</div>
-<div created="20141111191625685" creator="inmysocks" modified="20141209194846383" modifier="inmysocks" no_edit="true" tags="Dissertation" title="Citations">
-<pre>\define getSubject()
-[plugintiddlers[]subject[$(subject)$]][subject[$(subject)$]]
+<div created="20141227230158171" modified="20150202035414054" title="Book List">
+<pre>\define thisBookList()
+&lt;$list filter='[tag[Book]$(SelectedFilterPart)$sort[$(sortType)$]regexp:$(searchField)$[(?i)$(thisSearch)$]]'&gt;
+&lt;tr&gt;&lt;td&gt;&lt;$link to={{!!title}}&gt;&lt;$view field='title'/&gt;&lt;/$link&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=author/&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=location/&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=series/&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=genre/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/$list&gt;
 \end
 
-List citations by subject:
+\define thisBookList2()
+&lt;$list filter='[tag[Book]sort[$(sortType)$]regexp:$(searchField)$[(?i)$(thisSearch)$]]'&gt;
+&lt;tr&gt;&lt;td&gt;&lt;$link to={{!!title}}&gt;&lt;$view field='title'/&gt;&lt;/$link&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=author/&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=location/&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=series/&gt;&lt;/td&gt;&lt;td&gt;&lt;$view field=genre/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/$list&gt;
+\end
 
-Subject: &lt;$select tiddler='$:/state/viewcitation/subject' default='No Subject'&gt;
-&lt;$list filter='[plugintiddlers[]tag[CitationsSubject]][tag[CitationsSubject]]'&gt;
+\define thisSelectThing()
+&lt;$reveal type='match' state='$:/state/newbook!!sort' text='author'&gt;
+&lt;$select tiddler='$:/state/newbook' field='selected_type'&gt;
+&lt;option value=''&gt;All&lt;/option&gt;
+&lt;$list filter='[[$:/data/BookAuthors]indexes[]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/newbook!!sort' text='genre'&gt;
+&lt;$select tiddler='$:/state/newbook' field='selected_type'&gt;
+&lt;option value=''&gt;All&lt;/option&gt;
+&lt;$list filter='[[$:/data/BookGenres]indexes[]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/newbook!!sort' text='series'&gt;
+&lt;$select tiddler='$:/state/newbook' field='selected_type'&gt;
+&lt;option value=''&gt;All&lt;/option&gt;
+&lt;$list filter='[[$:/data/SeriesTitles]indexes[]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/newbook!!sort' text='location'&gt;
+&lt;$select tiddler='$:/state/newbook' field='selected_type'&gt;
+&lt;option value=''&gt;All&lt;/option&gt;
+&lt;$list filter='[[$:/data/BookLocations]indexes[]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/$reveal&gt;
+\end
+
+\define thisMakeSelectedValue()
+$(sortType)$[$(SelectedType)$]
+\end
+
+\define count1()
+&lt;$count filter='[tag[Book]$(SelectedFilterPart)$sort[$(sortType)$]regexp:$(searchField)$[(?i)$(thisSearch)$]]'/&gt;
+\end
+
+\define count2()
+&lt;$count filter='[tag[Book]sort[$(sortType)$]regexp:$(searchField)$[(?i)$(thisSearch)$]]'/&gt;
+\end
+
+If you select an author/series/location/genre from the drop down menu, then change the `Sort by` option you will have to select from the second dropdown menu again to get it to display things. Despite it showing `all` when you change the sort by option it keeps the previous value, which is invalid now. If I can get a select widget to active action widgets, or to change multiple fields at the same time than I can fix this.
+
+&lt;$set name=sortType value={{$:/state/newbook!!sort}}&gt;
+&lt;$set name=searchField value={{$:/state/newbook!!search_in}}&gt;
+&lt;$set name=thisSearch value={{$:/state/newbook!!search_text}}&gt;
+&lt;$set name=SelectedType value={{$:/state/newbook!!selected_type}}&gt;
+&lt;$set name=SelectedFilterPart value=&lt;&lt;thisMakeSelectedValue&gt;&gt;&gt;
+
+
+|Sort by |&lt;$select tiddler='$:/state/newbook' field='sort' default='title'&gt;&lt;option value='author'&gt;Author&lt;/option&gt;&lt;option value='genre'&gt;Genre&lt;/option&gt;&lt;option value='series'&gt;Series&lt;/option&gt;&lt;option value='title'&gt;Title&lt;/option&gt;&lt;option value=location&gt;Location&lt;/option&gt;&lt;/$select&gt;|&lt;&lt;thisSelectThing&gt;&gt;|
+|Search by |&lt;$select tiddler='$:/state/newbook' field='search_in' default='title'&gt;&lt;option value='author'&gt;Author&lt;/option&gt;&lt;option value='genre'&gt;Genre&lt;/option&gt;&lt;option value='series'&gt;Series&lt;/option&gt;&lt;option value='tags'&gt;Tag&lt;/option&gt;&lt;option value='title'&gt;Title&lt;/option&gt;&lt;option value=location&gt;Location&lt;/option&gt;&lt;/$select&gt;|&lt;$edit-text tiddler='$:/state/newbook' field='search_text' placeholder='Search'/&gt;|
+
+&lt;$reveal type='nomatch' state='$:/state/newbook!!selected_type' text=''&gt;
+Number of matching books: &lt;&lt;count1&gt;&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;Title&lt;/th&gt;&lt;th&gt;Author&lt;/th&gt;&lt;th&gt;Location&lt;/th&gt;&lt;th&gt;Series&lt;/th&gt;&lt;th&gt;Genre&lt;/th&gt;&lt;/tr&gt;
+&lt;&lt;thisBookList&gt;&gt;
+&lt;/table&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/newbook!!selected_type' text=''&gt;
+Number of matching books: &lt;&lt;count2&gt;&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;Title&lt;/th&gt;&lt;th&gt;Author&lt;/th&gt;&lt;th&gt;Location&lt;/th&gt;&lt;th&gt;Series&lt;/th&gt;&lt;th&gt;Genre&lt;/th&gt;&lt;/tr&gt;
+&lt;&lt;thisBookList2&gt;&gt;
+&lt;/table&gt;
+&lt;/$reveal&gt;
+
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;</pre>
+</div>
+<div created="20150108193706495" creator="inmysocks" modified="20150122134753651" modifier="inmysocks" title="BookmarkDisplayTemplate">
+<pre>&lt;a href={{!!url}} target=&quot;_blank&quot;&gt;&lt;$view field=title/&gt;&lt;/a&gt; - {{!!note}} (&lt;$link to={{!!title}}&gt;Open Tiddler&lt;/$link&gt;)&lt;br&gt;</pre>
+</div>
+<div blurb="Bookmarks" created="20150108180151488" creator="inmysocks" modified="20150205044426743" modifier="inmysocks" tags="Dashboard" title="Bookmarks">
+<pre>&lt;$reveal type='match' state='$:/state/reveal/Bookmarks/AddBookmark' text='show'&gt;
+&lt;$button set='$:/state/reveal/Bookmarks/AddBookmark' setTo='hide'&gt;Done&lt;/$button&gt;&lt;br&gt;
+
+&lt;$transclude tiddler='Add Bookmark'/&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/state/reveal/Bookmarks/AddBookmark' text='show'&gt;
+&lt;$button set='$:/state/reveal/Bookmarks/AddBookmark' setTo='show'&gt;New Bookmark&lt;/$button&gt;
+&lt;/$reveal&gt;
+
+&lt;&lt;tabs &quot;[[Bookmarks List]][[Bookmarks by Tags]][[Bookmarks Settings]]&quot;&gt;&gt;</pre>
+</div>
+<div created="20150108204156293" creator="inmysocks" modified="20150206021913795" modifier="inmysocks" title="Bookmarks by Tags">
+<pre>Select tag to see all bookmarks with that tag:&lt;br&gt;&lt;$select tiddler='$:/state/Bookmarks/BookmarksByTags'&gt;
+&lt;option value=''&gt;(Show All Tags)&lt;/option&gt;
+&lt;$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]sort[title]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt; 
+&lt;$reveal state='$:/state/Bookmarks/BookmarksByTags' type='nomatch' text=''&gt;
+&lt;$select tiddler='$:/state/Bookmarks/BookmarksByTags2'&gt;
+&lt;option value=''&gt;(All Results)&lt;/option&gt;
+&lt;$list filter='[tag{$:/state/Bookmarks/BookmarksByTags}tags[]sort[title]]-[[Bookmark]]-[{$:/state/Bookmarks/BookmarksByTags}]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;$reveal state='$:/state/Bookmarks/BookmarksByTags2' type='nomatch' text=''&gt;
+&lt;$select tiddler='$:/state/Bookmarks/BookmarksByTags3'&gt;
+&lt;option value=''&gt;(All Results)&lt;/option&gt;
+&lt;$list filter='[tag{$:/state/Bookmarks/BookmarksByTags}tag{$:/state/Bookmarks/BookmarksByTags2}tags[]sort[title]]-[[Bookmark]]-[{$:/state/Bookmarks/BookmarksByTags}]-[{$:/state/Bookmarks/BookmarksByTags2}]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/$reveal&gt;
+&lt;/$reveal&gt;
+
+&lt;!--Tag(s) selected--&gt;
+&lt;$reveal type='nomatch' state='$:/state/Bookmarks/BookmarksByTags' text=''&gt;
+&lt;$set name=searchSelection value={{$:/state/Bookmarks/BookmarksByTags}}&gt;
+&lt;$set name=searchSelection2 value={{$:/state/Bookmarks/BookmarksByTags2}}&gt;
+&lt;$set name=searchSelection3 value={{$:/state/Bookmarks/BookmarksByTags3}}&gt;
+&lt;$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]&lt;searchSelection&gt;]'&gt;
+&lt;$transclude tiddler=&quot;$:/core/ui/TagTemplate&quot; mode=&quot;inline&quot;/&gt;
+&lt;ul&gt;
+
+&lt;!--One tag selected--&gt;
+&lt;$reveal type='match' state='$:/state/Bookmarks/BookmarksByTags2' text=''&gt;
+&lt;$list filter='[tag&lt;currentTiddler&gt;tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate&gt;
+&lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;!--End one tag selected--&gt;
+
+&lt;!--Two tags selected--&gt;
+&lt;$reveal type='nomatch' state='$:/state/Bookmarks/BookmarksByTags2' text=''&gt;
+&lt;$reveal type='match' state='$:/state/Bookmarks/BookmarksByTags3' text=''&gt;
+&lt;$list filter='[tag&lt;currentTiddler&gt;tag&lt;searchSelection2&gt;tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate&gt;
+&lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;/$reveal&gt;
+&lt;!--End two tags selected--&gt;
+
+&lt;!--Three tags selected--&gt;
+&lt;$reveal type='nomatch' state='$:/state/Bookmarks/BookmarksByTags3' text=''&gt;
+&lt;$list filter='[tag&lt;currentTiddler&gt;tag&lt;searchSelection2&gt;tag&lt;searchSelection3&gt;tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate&gt;
+&lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;!--End three tags selected--&gt;
+
+&lt;/ul&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$reveal&gt;
+&lt;!--End tag(s) selected--&gt;
+
+&lt;!--No tag selected--&gt;
+&lt;$reveal type='match' state='$:/state/Bookmarks/BookmarksByTags' text=''&gt;
+&lt;$set name=searchSelection value={{$:/state/Bookmarks/BookmarksByTags}}&gt;
+&lt;$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]sort[title]]'&gt;
+&lt;$transclude tiddler=&quot;$:/core/ui/TagTemplate&quot; mode=&quot;inline&quot;/&gt;
+&lt;ul&gt;
+&lt;$list filter='[tag&lt;currentTiddler&gt;tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$reveal&gt;
+&lt;!--End no tag selected--&gt;</pre>
+</div>
+<div created="20150108203002139" creator="inmysocks" modified="20150131180025994" modifier="inmysocks" title="Bookmarks List">
+<pre>\define thisBookmarkList()
+&lt;$list filter='[tag[Bookmark]regexp[(?i)$(searchString)$]sort[title]]-[[$:/temp/Bookmarks/NewBookmark]]' template=BookmarkDisplayTemplate&gt;
+
+&lt;/$list&gt;
+\end
+
+Bookmarks: (Narrow List by Name: &lt;$edit-text tiddler='$:/temp/Bookmarks/BookmarkList' field=search_text/&gt;)&lt;br&gt;
+&lt;$set name=searchString value={{$:/temp/Bookmarks/BookmarkList!!search_text}}&gt;
+&lt;&lt;thisBookmarkList&gt;&gt;
+&lt;/$set&gt;</pre>
+</div>
+<div caption="Settings" created="20150122135158588" edit_tag_list="TiddlyWiki Plugins" modified="20150202224318213" title="Bookmarks Settings">
+<pre>\define thisRemoveTag()
+Select Tag: &lt;$select tiddler='Bookmarks Settings' field='edit_tag_list'&gt;
+&lt;$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt; 
+&lt;$button set='$:/data/Bookmarks/BookmarkTags##$(TagToRemove)$'&gt;Remove Tag&lt;/$button&gt;
+\end
+
+This is going to contain tools to remove tags from the potential bookmark tag list. This  should be exactly what is used in the library tracker, but it isn't working here. I am confused.
+
+&lt;$set name=TagToRemove value={{Bookmarks Settings!!edit_tag_list}}&gt;
+&lt;&lt;thisRemoveTag&gt;&gt;
+&lt;/$set&gt;</pre>
+</div>
+<div created="20141205200355907" modified="20141206180629653" no_edit="true" tags="Dashboard" title="Citation Library">
+<pre>&lt;&lt;tabs &quot;Citations [[Add Citation]] [[View Citation]] [[Edit Citations]]&quot; Citations&gt;&gt;</pre>
+</div>
+<div created="20141111191625685" creator="inmysocks" modified="20141209194846383" modifier="inmysocks" no_edit="true" title="Citations">
+<pre>List Citations:
+
+Subject: &lt;$select tiddler='$:/state/viewcitation/subject' default='All'&gt;
+&lt;option value='alltitle'&gt;All (sort by title)&lt;/option&gt;
+&lt;option value='allsubject'&gt;All (sort by subject)&lt;/option&gt;
+&lt;$list filter='[tag[CitationsSubject]]'&gt;
 &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
 
-Citations:
-
-&lt;$set name=subject value={{$:/state/viewcitation/subject}}&gt;
-&lt;$list filter=&lt;&lt;getSubject&gt;&gt;&gt;
-
+&lt;$reveal state='$:/state/viewcitation/subject' type='nomatch' text='alltitle'&gt;
+&lt;$reveal state='$:/state/viewcitation/subject' type='nomatch' text='allsubject'&gt;
+&lt;ul&gt;
+&lt;$list filter='[tag[Citations]]' variable=currentCitation&gt;
+&lt;$list filter='[title&lt;currentCitation&gt;get[subject_tiddler]]' variable=subjectsTiddler&gt;
+&lt;$list filter='[title&lt;subjectsTiddler&gt;indexes[]]' variable=currentSubject&gt;
+&lt;$reveal type='match' state='$:/state/viewcitation/subject' text=&lt;&lt;currentSubject&gt;&gt;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentCitation&gt;&gt;&gt;&lt;$view tiddler=&lt;&lt;currentCitation&gt;&gt; field='title'/&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$reveal&gt;
 &lt;/$list&gt;
-&lt;/$set&gt;
-
-&lt;&lt;bottomOfTiddler {{!!title}}&gt;&gt;</pre>
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+&lt;/$reveal&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/viewcitation/subject' type='match' text='alltitle'&gt;
+&lt;ul&gt;
+&lt;$list filter='[tag[Citations]sort[title]]'&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentCitation&gt;&gt;&gt;&lt;$view tiddler=&lt;&lt;currentCitation&gt;&gt; field='title'/&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/viewcitation/subject' type='match' text='allsubject'&gt;
+&lt;ul&gt;
+&lt;$list filter='[tag[Citations]get[subject_tiddler]indexes[]]' variable=subjectsTiddler&gt;
+&lt;h1&gt;&lt;&lt;subjectsTiddler&gt;&gt;&lt;/h1&gt;
+&lt;$list filter='[tag[Citations]]' variable=currentCitation&gt;
+&lt;$list filter='[title&lt;currentCitation&gt;get[subject_tiddler]]' variable=innerSubjectsTiddler&gt;
+&lt;$list filter='[title&lt;innerSubjectsTiddler&gt;indexes[]each[index]]'&gt;
+&lt;$list filter='[title&lt;subjectsTiddler&gt;is[current]]'&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentCitation&gt;&gt;&gt;&lt;$view tiddler=&lt;&lt;currentCitation&gt;&gt; field='title'/&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+&lt;/$reveal&gt;</pre>
+</div>
+<div tags="$:/tags/Macro" title="Citations Macros">
+<pre>\define monoSpacedCodeBlock(src)
+```
+$src$
+```
+\end</pre>
 </div>
 <div created="20141109023616493" creator="inmysocks" modified="20141204013130196" modifier="inmysocks" no_edit="true" tags="[[New Contact Form]]" title="Contact Group Selector">
 <pre>&lt;$select tiddler='ContactTemp' field='group'&gt;
@@ -5830,7 +6298,7 @@ Citations:
 &lt;/p&gt;</pre>
 </div>
 <div created="20141106185327458" creator="inmysocks" modified="20141204012800821" modifier="inmysocks" no_edit="true" tags="[[Contacts Settings]]" title="ContactDisplayTemplate1 Settings">
-<pre>&lt;p class='tc-tiddler-frame' style='width:400px; background-color:#f1f1f1'&gt;
+<pre>&lt;p class='tc-tiddler-frame' style='width:100%; background-color:#f1f1f1'&gt;
 ''Settings'':&lt;br&gt;
 __Button Style__:
 &lt;$select tiddler='ContactDisplayTemplate1' field=&quot;button_type&quot;&gt;
@@ -5877,7 +6345,7 @@ __Text Style__:
 <pre>!!Contact Display template to use:
 This is how each individual contact will be displayed in the list of contacts&lt;br&gt;
 
-&lt;div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'&gt;
+&lt;div class='tc-tiddler-frame' style='width:100%; background-color:#fafafa'&gt;
 &lt;$select tiddler='Contacts' field='contact_display_template'&gt;
 &lt;$list filter='[plugintiddlers[]tag[ContactDisplayTemplate]][tag[ContactDisplayTemplate]]'&gt;
 &lt;option value={{!!title}}&gt;&lt;$view field='display_name'/&gt;&lt;/option&gt;
@@ -5890,14 +6358,14 @@ This is how each individual contact will be displayed in the list of contacts&lt
  
 &lt;br&gt;
 Preview: &lt;br&gt;
-&lt;div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'&gt;
+&lt;div class='tc-tiddler-frame' style='width:100%; background-color:#f0f0f0'&gt;
 &lt;$tiddler tiddler={{Contacts!!contact_display_template}}&gt;&lt;$transclude/&gt;&lt;/$tiddler&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 !!Contact List template to use:
 This is the template used to generate the list of contacts, click on the name to see the template (How it looks changes based on the display template selected above).&lt;br&gt;
-&lt;div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'&gt;
+&lt;div class='tc-tiddler-frame' style='width:100%; background-color:#fafafa'&gt;
 
 &lt;$select tiddler='Contacts' field='contact_list_template'&gt;
 &lt;$list filter='[plugintiddlers[]tag[ContactListTemplate]][tag[ContactListTemplate]]'&gt;
@@ -5910,7 +6378,7 @@ This is the template used to generate the list of contacts, click on the name to
 &lt;/$tiddler&gt;
 &lt;br&gt;
 Preview:&lt;br&gt;
-&lt;div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'&gt;
+&lt;div class='tc-tiddler-frame' style='width:100%; background-color:#f0f0f0'&gt;
 &lt;$tiddler tiddler={{Contacts!!contact_list_template}}&gt;
 &lt;$transclude/&gt;
 &lt;/$tiddler&gt;
@@ -5921,7 +6389,7 @@ Preview:&lt;br&gt;
 <div created="20141109203159734" creator="inmysocks" modified="20141209181040884" modifier="inmysocks" no_edit="true" tags="$:/tags/Macro" title="ContactsMacros">
 <pre>\define contactSlider(buttonType)
 
-&lt;$tiddler tiddler=$(tiddlerName)$&gt;
+&lt;$tiddler tiddler=&quot;&quot;&quot;$(tiddlerName)$&quot;&quot;&quot;&gt;
 &lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/$(tiddlerName)$&quot; text=&quot;show&quot;&gt;
 
 &lt;$button set=&quot;$:/state/$(tiddlerName)$&quot; setTo=&quot;show&quot; class=$buttonType$&gt;{{$:/core/images/right-arrow}}$(textstyle1)$$(tiddlerName)$$(textstyle1)$&lt;/$button&gt; - {{$(tiddlerName)$!!blurb}}
@@ -6025,7 +6493,7 @@ About (&lt;$button set=&quot;$:/state/$(tiddlerName)$About&quot; setTo=&quot;sho
 
 About (&lt;$button set=&quot;$:/state/$(tiddlerName)$About&quot; setTo=&quot;hide&quot;&gt;Edit&lt;/$button&gt;): &lt;br&gt;
 
-&lt;$edit-text tiddler=&quot;$(tiddlerName)$&quot; field=&quot;text&quot; size=&quot;120&quot;/&gt; &lt;br&gt;
+&lt;$edit-text tiddler=&quot;$(tiddlerName)$&quot; field=&quot;text&quot; size=&quot;120&quot; class='tc-edit-texteditor'/&gt; &lt;br&gt;
 
 &lt;/$reveal&gt;
 
@@ -6091,8 +6559,8 @@ About (&lt;$button set=&quot;$:/state/$(tiddlerName)$About&quot; setTo=&quot;hid
 
 &lt;/$reveal&gt;</pre>
 </div>
-<div created="20141203190920779" list-before="" modified="20150111172120798" no_edit="true" tags="Contents" title="Dashboard">
-<pre>&lt;&lt;tabs &quot;DashboardTemplate Contents&quot; DashboardTemplate&gt;&gt;</pre>
+<div created="20141203190920779" list-before="" modified="20141210060635302" no_edit="true" tags="Contents" title="Dashboard">
+<pre>&lt;&lt;tabs &quot;DashboardTemplate [tag[Dashboard Tab]]&quot; DashboardTemplate&gt;&gt;</pre>
 </div>
 <div caption="Main Dashboard" created="20141203194541067" modified="20141206183332945" tags="Templates" title="DashboardTemplate">
 <pre>&lt;&lt;toc-tabbed-internal-nav tag:&quot;Dashboard&quot; selectedTiddler:&quot;$:/temp/toc/selectedTiddler&quot; unselectedText:&quot;Select a topic in the table of contents. Click the arrow to expand a topic.&quot; default:&quot;Introduction&quot;&gt;&gt;</pre>
@@ -6166,6 +6634,88 @@ Click on the trashcan icon to remove an item
 &lt;&lt;thisEditMacro&gt;&gt;
 &lt;/$reveal&gt;
 &lt;/$set&gt;</pre>
+</div>
+<div creator="inmysocks" no_edit="true" title="Edit Citations">
+<pre>\define thisEditSubjects()
+&lt;li&gt;&lt;$view field='title'/&gt; &lt;$button set='$(subjectTiddler)$##$(currentSubject)$'&gt;Remove Subject&lt;/$button&gt;&lt;/li&gt;
+\end
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;List of all tiddlers &lt;/th&gt;&lt;th&gt;List by subject&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;$select tiddler='$:/state/CitationsLibrary/EditCitations/SelectedCitation'&gt;
+&lt;$list filter='[tag[Citations]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$select tiddler='$:/state/CitationsLibrary/EditCitations/SelectedCitation'&gt;
+&lt;$list filter='[tag[Citations]get[subject_tiddler]indexes[]]' variable=subjectsTiddler&gt;
+&lt;optgroup label=&lt;&lt;subjectsTiddler&gt;&gt;&gt;
+&lt;$list filter='[tag[Citations]]' variable=currentCitation&gt;
+&lt;$list filter='[title&lt;currentCitation&gt;get[subject_tiddler]]' variable=innerSubjectsTiddler&gt;
+&lt;$list filter='[title&lt;innerSubjectsTiddler&gt;indexes[]]'&gt;
+&lt;$list filter='[title&lt;subjectsTiddler&gt;is[current]]'&gt;
+&lt;option&gt;&lt;$view tiddler=&lt;&lt;currentCitation&gt;&gt; field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/optgroup&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;Abstract Tiddler&lt;/th&gt;&lt;td&gt;&lt;$edit-text tiddler={{$:/state/CitationsLibrary/EditCitations/SelectedCitation}} field='abstract_tiddler'/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;Bibtex Tiddler&lt;/th&gt;&lt;td&gt;&lt;$edit-text tiddler={{$:/state/CitationsLibrary/EditCitations/SelectedCitation}} field='bibtex_tiddler'/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;Subject Tiddler&lt;/th&gt;&lt;td&gt;&lt;$edit-text tiddler={{$:/state/CitationsLibrary/EditCitations/SelectedCitation}} field='subject_tiddler'/&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+Citation Title: {{$:/state/CitationsLibrary/EditCitations/SelectedCitation}}
+
+&lt;$tiddler tiddler={{$:/state/CitationsLibrary/EditCitations/SelectedCitation}}&gt;
+Abstract:
+&lt;$edit-text tiddler={{!!abstract_tiddler}} class='tc-edit-texteditor'/&gt;
+
+Bibtex:
+&lt;$edit-text tiddler={{!!bibtex_tiddler}} class='tc-edit-texteditor'/&gt;
+
+Subjects:
+
+&lt;$reveal type='nomatch' state='$:/state/editcition/addsubject' text='newsubject'&gt;
+Subject: &lt;$select tiddler='$:/state/editcitation/subject' default='No Subject'&gt;
+&lt;$list filter='[tag[CitationsSubject]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+&lt;$button&gt;Add Subject
+&lt;$action-setfield $tiddler={{!!subject_tiddler}} $index={{$:/state/editcitation/subject}} $value='1'/&gt;
+&lt;/$button&gt;
+&lt;$button set='$:/state/editcition/addsubject' setTo='newsubject'&gt;New Subject&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/state/editcition/addsubject' text='newsubject'&gt;
+Subject Name: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/state/editcition/addsubject' field='newsubjectname'/&gt;&lt;br&gt;
+&lt;$button&gt;Add Subject
+&lt;$action-setfield $tiddler={{$:/state/editcition/addsubject!!newsubjectname}} tags=CitationsSubject/&gt;
+&lt;$action-setfield $tiddler='$:/state/editcition/addsubject' $field='newsubjectname' $value=''/&gt;
+&lt;/$button&gt;
+&lt;$button set='$:/state/editcition/addsubject' setTo='nonewsubject'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;
+
+&lt;$set name=subjectTiddler value={{!!subject_tiddler}}&gt;
+&lt;ul&gt;
+&lt;$list filter='[{!!subject_tiddler}indexes[]]'&gt;
+&lt;$set name=currentSubject value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;&lt;thisEditSubjects&gt;&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+&lt;/$set&gt;
+
+&lt;/$tiddler&gt;</pre>
 </div>
 <div created="20141203202736556" modified="20141204013102397" no_edit="true" tags="Tools" title="Edit Tiddler Form">
 <pre>!!Step 1 - ''Pick the tiddler to edit'' 
@@ -6258,9 +6808,6 @@ Press this button and the tiddler will be opened so you can view it.
 <div description="Example Description" modified="20141204010722516" tags="[[Example Tag]]" title="Example Tiddler">
 <pre>Example Text</pre>
 </div>
-<div created="20150110230018369" defaultvalue="0" filter="[tag[sum]]" modified="20150111000113457" store_field="store_field" store_tiddler="New Tiddler" sum_field="sum_field" tags="" title="Expression Tiddler">
-<pre></pre>
-</div>
 <div button_type="" created="20141109191357201" creator="inmysocks" group="test" group_type="&lt;&lt;collapsibleGroupContactListTemplate&gt;&gt;" modified="20141204013231476" modifier="inmysocks" no_edit="true" tags="Templates" title="GroupContactListGroupTemplate">
 <pre>\define collapsibleGroupContactListTemplate()
 
@@ -6330,7 +6877,7 @@ Press this button and the tiddler will be opened so you can view it.
 &lt;/$set&gt;</pre>
 </div>
 <div button_type="tc-btn-invisible" created="20141109194308726" creator="inmysocks" modified="20141204013252900" modifier="inmysocks" no_edit="true" tags="[[Contacts Settings]]" title="GroupContactListTemplate Settings">
-<pre>&lt;p class='tc-tiddler-frame' style='width:400px; background-color:#f1f1f1'&gt;
+<pre>&lt;p class='tc-tiddler-frame' style='width:100%; background-color:#f1f1f1'&gt;
 ''Settings'':&lt;br&gt;
 __Grouping Type__:
 &lt;$select tiddler='GroupContactListGroupTemplate' field=&quot;group_type&quot;&gt;
@@ -6391,6 +6938,61 @@ Click the button down below that says `Don't show this again` and this message w
 
 &lt;$button message='tm-modal' param=RemoveIntroMessageModal&gt;Don't show this again&lt;/$button&gt;</pre>
 </div>
+<div book_title="Boneshaker" created="20141227230052741" list-after="Bookmarks" modified="20150203222646555" tags="Dashboard" title="Library Tracker">
+<pre>&lt;&lt;tabs &quot;[[Book List]] [[Add Books]] [[Manage Books]] [[Library Tracker Settings]]&quot; &quot;[[Book List]]&quot;&gt;&gt;</pre>
+</div>
+<div caption="Settings" created="20150122105554017" edit_author_list="blerg" modified="20150130025204191" show_author="true" show_genre="true" show_location="true" show_series="true" show_tags="true" title="Library Tracker Settings">
+<pre>\define thisRemoveAuthor()
+Select Author: &lt;$select tiddler='Library Tracker Settings' field='edit_author_list'&gt;&lt;$list filter='[[$:/data/BookAuthors]indexes[]]'&gt;&lt;option&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;&lt;/$list&gt;&lt;/$select&gt; &lt;$button set='$:/data/BookAuthors##$(AuthorToRemove)$'&gt;Remove Author&lt;/$button&gt;
+\end
+
+\define thisRemoveSeries()
+Select Series: &lt;$select tiddler='Library Tracker Settings' field='edit_series_list'&gt;&lt;$list filter='[[$:/data/SeriesTitles]indexes[]]'&gt;&lt;option&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;&lt;/$list&gt;&lt;/$select&gt; &lt;$button set='$:/data/SeriesTitles##$(SeriesToRemove)$'&gt;Remove Series&lt;/$button&gt;
+\end
+
+\define thisRemoveGenre()
+Select Genre: &lt;$select tiddler='Library Tracker Settings' field='edit_genre_list'&gt;&lt;$list filter='[[$:/data/BookGenres]indexes[]]'&gt;&lt;option&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;&lt;/$list&gt;&lt;/$select&gt; &lt;$button set='$:/data/BookGenres##$(GenreToRemove)$'&gt;Remove Genre&lt;/$button&gt;
+\end
+
+\define thisRemoveLocation()
+Select Location: &lt;$select tiddler='Library Tracker Settings' field='edit_location_list'&gt;&lt;$list filter='[[$:/data/BookLocations]indexes[]]'&gt;&lt;option&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;&lt;/$list&gt;&lt;/$select&gt; &lt;$button set='$:/data/BookLocations##$(LocationToRemove)$'&gt;Remove Location&lt;/$button&gt;
+\end
+
+\define thisRemoveTag()
+Select Tag: &lt;$select tiddler='Library Tracker Settings' field='edit_tag_list'&gt;&lt;$list filter='[[$:/data/BookTags]indexes[]]'&gt;&lt;option&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/option&gt;&lt;/$list&gt;&lt;/$select&gt; &lt;$button set='$:/data/BookTags##$(TagToRemove)$'&gt;Remove Tag&lt;/$button&gt;
+\end
+
+&lt;$checkbox tiddler='Library Tracker Settings' field='show_author' checked=true unchecked=false&gt;Show Author&lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox tiddler='Library Tracker Settings' field='show_series' checked=true unchecked=false&gt;Show Series&lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox tiddler='Library Tracker Settings' field='show_genre' checked=true unchecked=false&gt;Show Genre&lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox tiddler='Library Tracker Settings' field='show_location' checked=true unchecked=false&gt;Show Location&lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox tiddler='Library Tracker Settings' field='show_tags' checked=true unchecked=false&gt;Show Tags&lt;/$checkbox&gt;&lt;br&gt;
+
+!!Edit Author List
+&lt;$set name=AuthorToRemove value={{Library Tracker Settings!!edit_author_list}}&gt;
+&lt;&lt;thisRemoveAuthor&gt;&gt;
+&lt;/$set&gt;
+
+!!Edit Series List
+&lt;$set name=SeriesToRemove value={{Library Tracker Settings!!edit_series_list}}&gt;
+&lt;&lt;thisRemoveSeries&gt;&gt;
+&lt;/$set&gt;
+
+!!Edit Genre List
+&lt;$set name=GenreToRemove value={{Library Tracker Settings!!edit_genre_list}}&gt;
+&lt;&lt;thisRemoveGenre&gt;&gt;
+&lt;/$set&gt;
+
+!!Edit Location List
+&lt;$set name=LocationToRemove value={{Library Tracker Settings!!edit_location_list}}&gt;
+&lt;&lt;thisRemoveLocation&gt;&gt;
+&lt;/$set&gt;
+
+!!Edit Tag List
+&lt;$set name=TagToRemove value={{Library Tracker Settings!!edit_tag_list}}&gt;
+&lt;&lt;thisRemoveTag&gt;&gt;
+&lt;/$set&gt;</pre>
+</div>
 <div blurb="" created="20141205192405161" creator="inmysocks" modified="20141206182621199" modifier="inmysocks" subject="Machine-to-machine Communication" tags="Citations" title="M2M Service Platforms: Survey, Issues, and Enabling Technologies">
 <pre>Subject: {{!!subject}}&lt;br&gt;
 
@@ -6418,6 +7020,149 @@ ISSN={1553-877X},}
 </div>
 <div modified="20141205203521412" modifier="inmysocks" tags="CitationsSubject" title="Machine-to-machine Communication">
 <pre></pre>
+</div>
+<div book_title="Foundation" created="20141227230045301" modified="20150202040126066" title="Manage Books">
+<pre>\define thisSeriesSelect()
+&lt;$select tiddler={{!!book_title}} field='series' default='None'&gt;
+&lt;$list filter='[[$:/data/SeriesTitles]indexes[]sort[title]regexp:[(?i)$(thisSeriesSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisGenreSelect()
+&lt;$select tiddler={{!!book_title}} field='genre' default='None'&gt;
+&lt;$list filter='[[$:/data/BookGenres]indexes[]sort[title]regexp:[(?i)$(thisGenreSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisAuthorSelect()
+&lt;$select tiddler={{!!book_title}} field='author'&gt;
+&lt;$list filter='[[$:/data/BookAuthors]indexes[]sort[title]regexp:[(?i)$(thisAuthorSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisLocationSelect()
+&lt;$select tiddler={{!!book_title}} field='location' default='None'&gt;
+&lt;$list filter='[[$:/data/BookLocations]indexes[]sort[title]regexp:[(?i)$(thisLocationSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisTagSelect()
+&lt;$select tiddler='$:/state/booktag' field='selected_tag'&gt;
+&lt;$list filter='[[$:/data/BookTags]indexes[]sort[title]regexp:[(?i)$(thisTagSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisBookSelect()
+&lt;$select field='book_title'&gt;
+&lt;$list filter='[tag[Book]sort[title]regexp:[(?i)$(thisBookSearch)$]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+\end
+
+\define thisRemoveBookButton()
+&lt;$button popup='$:/state/test'&gt;Remove Book&lt;/$button&gt;
+
+&lt;$reveal type=&quot;popup&quot; state=&quot;$:/state/test&quot;&gt;
+&lt;div class=&quot;tc-drop-down&quot;&gt;
+
+{{DeleteBookConfirmation}}
+
+&lt;/div&gt;
+&lt;/$reveal&gt;
+\end
+
+Book: 
+&lt;$set name=thisBookSearch value={{$:/state/newbook!!narrow_book_select}}&gt;
+&lt;&lt;thisBookSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_book_select' placeholder='Narrow Book List'/&gt; (&lt;&lt;thisRemoveBookButton&gt;&gt;)
+&lt;br&gt;
+
+&lt;!--Author--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_author'&gt;
+Author: &lt;$reveal state='$:/state/Library Tracker/add author' type=nomatch text='new'&gt;
+&lt;$set name=thisAuthorSearch value={{$:/state/newbook!!narrow_author_select}}&gt;
+&lt;&lt;thisAuthorSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_author_select' placeholder='Narrow Author List'/&gt; (&lt;$button set='$:/state/Library Tracker/add author' setTo='new'&gt;New Author&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add author' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_author' placeholder='Author'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/BookAuthors' $index={{$:/state/newbook!!book_author}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_author' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add author' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;!--End Author--&gt;
+&lt;!--Series--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_series'&gt;
+Series: &lt;$reveal state='$:/state/Library Tracker/add series' type=nomatch text='new'&gt;
+&lt;$set name=thisSeriesSearch value={{$:/state/newbook!!narrow_series_select}}&gt;
+&lt;&lt;thisSeriesSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_series_select' placeholder='Narrow Series List'/&gt;  (&lt;$button set='$:/state/Library Tracker/add series' setTo='new'&gt;New Series&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add series' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_series' placeholder='Series Title'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/SeriesTitles' $index={{$:/state/newbook!!book_series}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_series' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add series' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;!--End Series--&gt;
+&lt;!--Genre--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_genre'&gt;
+Genre: &lt;$reveal state='$:/state/Library Tracker/add genre' type=nomatch text='new'&gt;
+&lt;$set name=thisGenreSearch value={{$:/state/newbook!!narrow_genre_select}}&gt;
+&lt;&lt;thisGenreSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_genre_select' placeholder='Narrow Genre List'/&gt; (&lt;$button set='$:/state/Library Tracker/add genre' setTo='new'&gt;New Genre&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add genre' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_genre' placeholder='Genre'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/BookGenres' $index={{$:/state/newbook!!book_genre}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_genre' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add genre' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;!--End Genre--&gt;
+&lt;!--Location--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_location'&gt;
+Location: &lt;$reveal state='$:/state/Library Tracker/add location' type=nomatch text='new'&gt;
+&lt;$set name=thisLocationSearch value={{$:/state/newbook!!narrow_location_select}}&gt;
+&lt;&lt;thisLocationSelect&gt;&gt;&lt;/$set&gt; &lt;$edit-text tiddler='$:/state/newbook' field='narrow_location_select' placeholder='Narrow Location List'/&gt; (&lt;$button set='$:/state/Library Tracker/add location' setTo='new'&gt;New  Location&lt;/$button&gt;)
+&lt;/$reveal&gt;
+&lt;$reveal state='$:/state/Library Tracker/add location' type=match text='new'&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='book_location' placeholder='Location'/&gt;&lt;$button&gt;&lt;$action-setfield $tiddler='$:/data/BookLocations' $index={{$:/state/newbook!!book_location}} $value=1/&gt;&lt;$action-setfield $tiddler='$:/state/newbook' $field='book_location' $value=''/&gt;Add&lt;/$button&gt;&lt;$button set='$:/state/Library Tracker/add location' setTo='notnew'&gt;Done&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;/$reveal&gt;&lt;br&gt;&lt;br&gt;
+&lt;!--End Location--&gt;
+
+&lt;!--Tags--&gt;
+&lt;$reveal type=match text=true state='Library Tracker Settings!!show_tags'&gt;
+Tags (it will always be tagged with `Book` by default):&lt;br&gt;
+&lt;$reveal type=match state='$:/state/newbook!!add_or_create_tag' text='create'&gt;
+New Tag: &lt;$edit-text tiddler='$:/state/booktag' field='tag_temp' placeholder='New Tag'/&gt;
+&lt;$button&gt;Create Tag
+&lt;$action-setfield $tiddler='$:/data/BookTags' $index={{$:/state/booktag!!tag_temp}} $value=1/&gt;
+&lt;$action-setfield $tiddler='$:/state/booktag' $field='tag_temp' $value=''/&gt;
+&lt;/$button&gt;
+&lt;$button set='$:/state/newbook!!add_or_create_tag' setTo='nocreate'&gt;Done&lt;/$button&gt;&lt;br&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/state/newbook!!add_or_create_tag' text='create'&gt;
+Tag to add: 
+&lt;$set name=thisTagSearch value={{$:/state/newbook!!narrow_tag_select}}&gt;
+&lt;&lt;thisTagSelect&gt;&gt;
+&lt;/$set&gt;
+&lt;$fieldmangler tiddler={{!!book_title}}&gt;
+&lt;$button&gt;
+&lt;$action-sendmessage $message='tm-add-tag' $param={{$:/state/booktag!!selected_tag}}/&gt;Add Tag
+&lt;/$button&gt;
+&lt;$edit-text tiddler='$:/state/newbook' field='narrow_tag_select' placeholder='Narrow Tag List'/&gt;
+(&lt;$button set='$:/state/newbook!!add_or_create_tag' setTo='create'&gt;New Tag&lt;/$button&gt;)
+&lt;/$fieldmangler&gt;
+&lt;br&gt;
+&lt;/$reveal&gt;
+List of current tags:&lt;br&gt;
+&lt;$fieldmangler tiddler={{!!book_title}}&gt;
+&lt;$list filter='[{!!book_title}tags[]]-Book'&gt;&lt;$view field='title'/&gt; &lt;$button&gt;Remove Tag&lt;$action-sendmessage $message='tm-remove-tag' $param=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/$button&gt;&lt;br&gt; &lt;/$list&gt;
+&lt;/$fieldmangler&gt;
+&lt;/$reveal&gt;
+&lt;!--End Tags--&gt;</pre>
 </div>
 <div created="20141203180455809" modified="20141210055531239" no_edit="true" tags="Tools Dashboard" title="Manage Table of Contents">
 <pre>You can use this to rearrange the table of contents displayed above under the `Table of Contents` tab. (To display the table of contents click on the tab).
@@ -6489,15 +7234,6 @@ Find the tiddler that you want to move in the table of contents and click the `U
 &lt;/$set&gt;
 &lt;/$set&gt;
 &lt;/$set&gt;</pre>
-</div>
-<div created="20150110230034978" modified="20150110230218250" tags="" title="New Tiddler">
-<pre>{{!!store_field}}</pre>
-</div>
-<div created="20150110230134775" modified="20150110230209042" sum_field="20" tags="sum" title="New Tiddler 1">
-<pre></pre>
-</div>
-<div created="20150110230147024" modified="20150110230159718" sum_field="10" tags="sum" title="New Tiddler 2">
-<pre></pre>
 </div>
 <div created="20141203165035347" modified="20141204035118137" no_edit="true" tags="Tools" title="New Tiddler Form">
 <pre>!!Step 1 - ''Give the tiddler a name'' 
@@ -6663,9 +7399,6 @@ Click on the trashcan icon to remove a note
 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20150110231600747" modified="20150110231615204" tags="" title="Summation Daemon Configuration">
-<pre></pre>
-</div>
 <div created="20141204203125231" modified="20141206181601566" no_edit="true" tags="" title="Task List">
 <pre>&lt;$transclude tiddler=NewTaskButton/&gt;
 
@@ -6809,13 +7542,122 @@ Select New Location: &lt;$select tiddler='$:/state/temporaryTocLocation'&gt;
 &lt;$view field='title'/&gt;&lt;br&gt;
 &lt;/$list&gt;</pre>
 </div>
+<div no_edit="true" title="Upgrade Citations from 0.1.x to 0.2.x">
+<pre>\define makeCitationText()
+
+Subjects: 
+
+&lt;ul&gt;
+&lt;$list filter='[[$(subjectsTiddler)$]indexes[]]'&gt;
+&lt;li&gt;&lt;$view field='title'/&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+
+Abstract:&lt;br&gt;
+
+&lt;$view tiddler=&quot;&quot;&quot;$(abstractTiddler)$&quot;&quot;&quot; field='text'/&gt;
+
+Bibtex:
+
+---
+
+$(bibTex)$
+
+---
+
+\end
+
+\define thisMakeBibtexTiddler()
+
+$(currentTitle)$_BibTex
+
+\end
+
+\define thisMakeAbstractTiddler()
+
+$(currentTitle)$_Abstract
+
+\end
+
+\define thisMakeSubjectTiddler()
+
+$(currentTitle)$_Subject
+
+\end
+
+\define getBibTex()
+&lt;$macrocall $name=monoSpacedCodeBlock src={{$(bibTexTiddler)$}}/&gt;
+\end
+
+&lt;$select tiddler='$:/state/UpgradeCitation/selectedtiddler'&gt;
+&lt;$list filter='[tag[Citations]has[subject]]'&gt;
+&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+
+&lt;$tiddler tiddler={{$:/state/UpgradeCitation/selectedtiddler}}&gt;
+&lt;$set name=currentTitle value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$set name=bibTexTiddler value=&lt;&lt;thisMakeBibtexTiddler&gt;&gt;&gt;
+&lt;$set name=subjectsTiddler value=&lt;&lt;thisMakeSubjectTiddler&gt;&gt;&gt;
+&lt;$set name=bibTex value=&lt;&lt;getBibTex&gt;&gt;&gt;
+&lt;$set name=abstractTiddler value=&lt;&lt;thisMakeAbstractTiddler&gt;&gt;&gt;
+&lt;$button&gt;Upgrade
+&lt;$action-setfield bibtex_tiddler=&lt;&lt;thisMakeBibtexTiddler&gt;&gt; abstract_tiddler=&lt;&lt;thisMakeAbstractTiddler&gt;&gt; subject_tiddler=&lt;&lt;thisMakeSubjectTiddler&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;thisMakeSubjectTiddler&gt;&gt; $index={{!!subject}} $value=1/&gt;
+&lt;$action-setfield text=&lt;&lt;makeCitationText&gt;&gt;/&gt;
+&lt;/$button&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$tiddler&gt;</pre>
+</div>
 <div caption="Task List" created="20141204015857343" entry_display_template="BasicTaskDisplayTemplate" finished_task_display_template="BasicFinishedEntryDisplayTemplate" finished_task_list_template="BasicFinishedEntryDisplayTemplate" modified="20141206181652561" no_edit="true" tags="Dashboard" task_list_template="BasicTaskListTemplate" title="Upgraded Task List">
 <pre>&lt;&lt;tabs &quot;[[Task List]] [[Task List Settings]]&quot; [[Task List]]&gt;&gt;</pre>
+</div>
+<div creator="inmysocks" no_edit="true" title="View Citation">
+<pre>&lt;&lt;tabs &quot;[[View Citation by Subject]][[View Citation by Title]]&quot; &quot;[[View Citation by Subject]]&quot;&gt;&gt;</pre>
+</div>
+<div creator="inmysocks" no_edit="true" title="View Citation by Subject">
+<pre>Subject: &lt;$select tiddler='$:/state/viewcitation/subject' default='No Subject'&gt;
+&lt;$list filter='[tag[CitationsSubject]sort[title]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+
+Citation: &lt;$select tiddler='$:/state/viewcitation/citationbysubject'&gt;
+&lt;$list filter='[tag[Citations]sort[title]]' variable=currentCitation&gt;
+&lt;$list filter='[title&lt;currentCitation&gt;get[subject_tiddler]]' variable=subjectsTiddler&gt;
+&lt;$list filter='[title&lt;subjectsTiddler&gt;indexes[]]'&gt;&lt;!-- variable=currentSubject&gt;--&gt;
+&lt;$list filter='[title{$:/state/viewcitation/subject}is[current]]'&gt;
+&lt;option&gt;&lt;$view tiddler=&lt;&lt;currentCitation&gt;&gt; field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+
+&lt;$transclude tiddler={{$:/state/viewcitation/citationbysubject}}&gt;
+
+&lt;/$transclude&gt;</pre>
+</div>
+<div creator="inmysocks" no_edit="true" title="View Citation by Title">
+<pre>Citation: &lt;$select tiddler='$:/state/viewcitation/citationbytitle'&gt;
+&lt;$list filter='[tag[Citations]sort[title]]'&gt;
+&lt;option&gt;&lt;$view tiddler=&lt;&lt;currentTiddler&gt;&gt; field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+
+&lt;$transclude tiddler={{$:/state/viewcitation/citationbytitle}}&gt;
+
+&lt;/$transclude&gt;</pre>
 </div>
 <div created="20141104204758595" creator="inmysocks" modified="20141206190532660" modifier="inmysocks" no_edit="true" tags="Contents" title="Wiki Settings">
 <pre>These tiddlers change the behavior or appearance of the other parts of the wiki.
 
-&lt;$list filter=[tag[Wiki Settings]]&gt;
+&lt;$list filter='[tag[Wiki Settings]]'&gt;
+
 &lt;/$list&gt;</pre>
 </div>
 <div created="20141216223509853" modified="20141217014933961" no_edit="true" title="Write Quick Note">

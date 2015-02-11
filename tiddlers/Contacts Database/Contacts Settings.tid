@@ -10,7 +10,7 @@ title: Contacts Settings
 !!Contact Display template to use:
 This is how each individual contact will be displayed in the list of contacts<br>
 
-<div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
+<div class='tc-tiddler-frame' style='width:100%; background-color:#fafafa'>
 <$select tiddler='Contacts' field='contact_display_template'>
 <$list filter='[plugintiddlers[]tag[ContactDisplayTemplate]][tag[ContactDisplayTemplate]]'>
 <option value={{!!title}}><$view field='display_name'/></option>
@@ -23,14 +23,14 @@ This is how each individual contact will be displayed in the list of contacts<br
  
 <br>
 Preview: <br>
-<div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'>
+<div class='tc-tiddler-frame' style='width:100%; background-color:#f0f0f0'>
 <$tiddler tiddler={{Contacts!!contact_display_template}}><$transclude/></$tiddler>
 </div>
 </div>
 
 !!Contact List template to use:
 This is the template used to generate the list of contacts, click on the name to see the template (How it looks changes based on the display template selected above).<br>
-<div class='tc-tiddler-frame' style='width:600px; background-color:#fafafa'>
+<div class='tc-tiddler-frame' style='width:100%; background-color:#fafafa'>
 
 <$select tiddler='Contacts' field='contact_list_template'>
 <$list filter='[plugintiddlers[]tag[ContactListTemplate]][tag[ContactListTemplate]]'>
@@ -43,7 +43,7 @@ This is the template used to generate the list of contacts, click on the name to
 </$tiddler>
 <br>
 Preview:<br>
-<div class='tc-tiddler-frame' style='width:500px; background-color:#f0f0f0'>
+<div class='tc-tiddler-frame' style='width:100%; background-color:#f0f0f0'>
 <$tiddler tiddler={{Contacts!!contact_list_template}}>
 <$transclude/>
 </$tiddler>

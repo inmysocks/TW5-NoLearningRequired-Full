@@ -1,0 +1,18 @@
+blurb:  Bookmarks
+created: 20150108180151488
+creator: inmysocks
+modified: 20150205044426743
+modifier: inmysocks
+tags: Dashboard
+title: Bookmarks
+
+<$reveal type='match' state='$:/state/reveal/Bookmarks/AddBookmark' text='show'>
+<$button set='$:/state/reveal/Bookmarks/AddBookmark' setTo='hide'>Done</$button><br>
+
+<$transclude tiddler='Add Bookmark'/>
+</$reveal>
+<$reveal type='nomatch' state='$:/state/reveal/Bookmarks/AddBookmark' text='show'>
+<$button set='$:/state/reveal/Bookmarks/AddBookmark' setTo='show'>New Bookmark</$button>
+</$reveal>
+
+<<tabs "[[Bookmarks List]][[Bookmarks by Tags]][[Bookmarks Settings]]">>

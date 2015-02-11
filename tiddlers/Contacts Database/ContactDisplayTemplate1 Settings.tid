@@ -6,7 +6,7 @@ no_edit: true
 tags: [[Contacts Settings]]
 title: ContactDisplayTemplate1 Settings
 
-<p class='tc-tiddler-frame' style='width:400px; background-color:#f1f1f1'>
+<p class='tc-tiddler-frame' style='width:100%; background-color:#f1f1f1'>
 ''Settings'':<br>
 __Button Style__:
 <$select tiddler='ContactDisplayTemplate1' field="button_type">

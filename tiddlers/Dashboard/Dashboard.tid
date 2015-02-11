@@ -5,4 +5,4 @@ no_edit: true
 tags: Contents
 title: Dashboard
 
-<<tabs "DashboardTemplate Contents" DashboardTemplate>>
+<<tabs "DashboardTemplate [tag[Dashboard Tab]]" DashboardTemplate>>

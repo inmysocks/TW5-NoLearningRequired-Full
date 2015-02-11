@@ -1,0 +1,16 @@
+created: 20150108203002139
+creator: inmysocks
+modified: 20150131180025994
+modifier: inmysocks
+title: Bookmarks List
+
+\define thisBookmarkList()
+<$list filter='[tag[Bookmark]regexp[(?i)$(searchString)$]sort[title]]-[[$:/temp/Bookmarks/NewBookmark]]' template=BookmarkDisplayTemplate>
+
+</$list>
+\end
+
+Bookmarks: (Narrow List by Name: <$edit-text tiddler='$:/temp/Bookmarks/BookmarkList' field=search_text/>)<br>
+<$set name=searchString value={{$:/temp/Bookmarks/BookmarkList!!search_text}}>
+<<thisBookmarkList>>
+</$set>

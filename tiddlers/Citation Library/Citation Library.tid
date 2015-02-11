@@ -4,4 +4,4 @@ no_edit: true
 tags: Dashboard
 title: Citation Library
 
-<<tabs "Citations [[Add Citation]]" Citations>>
+<<tabs "Citations [[Add Citation]] [[Selected Citations]] [[Selected Citations BibTex]] [[View Citation]] [[Edit Citations]]" Citations>>

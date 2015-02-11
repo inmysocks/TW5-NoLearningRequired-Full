@@ -1,0 +1,61 @@
+caption: Settings
+created: 20150122105554017
+edit_author_list: blerg
+modified: 20150130025204191
+show_author: true
+show_genre: true
+show_location: true
+show_series: true
+show_tags: true
+title: Library Tracker Settings
+
+\define thisRemoveAuthor()
+Select Author: <$select tiddler='Library Tracker Settings' field='edit_author_list'><$list filter='[[$:/data/BookAuthors]indexes[]]'><option><<currentTiddler>></option></$list></$select> <$button set='$:/data/BookAuthors##$(AuthorToRemove)$'>Remove Author</$button>
+\end
+
+\define thisRemoveSeries()
+Select Series: <$select tiddler='Library Tracker Settings' field='edit_series_list'><$list filter='[[$:/data/SeriesTitles]indexes[]]'><option><<currentTiddler>></option></$list></$select> <$button set='$:/data/SeriesTitles##$(SeriesToRemove)$'>Remove Series</$button>
+\end
+
+\define thisRemoveGenre()
+Select Genre: <$select tiddler='Library Tracker Settings' field='edit_genre_list'><$list filter='[[$:/data/BookGenres]indexes[]]'><option><<currentTiddler>></option></$list></$select> <$button set='$:/data/BookGenres##$(GenreToRemove)$'>Remove Genre</$button>
+\end
+
+\define thisRemoveLocation()
+Select Location: <$select tiddler='Library Tracker Settings' field='edit_location_list'><$list filter='[[$:/data/BookLocations]indexes[]]'><option><<currentTiddler>></option></$list></$select> <$button set='$:/data/BookLocations##$(LocationToRemove)$'>Remove Location</$button>
+\end
+
+\define thisRemoveTag()
+Select Tag: <$select tiddler='Library Tracker Settings' field='edit_tag_list'><$list filter='[[$:/data/BookTags]indexes[]]'><option><<currentTiddler>></option></$list></$select> <$button set='$:/data/BookTags##$(TagToRemove)$'>Remove Tag</$button>
+\end
+
+<$checkbox tiddler='Library Tracker Settings' field='show_author' checked=true unchecked=false>Show Author</$checkbox><br>
+<$checkbox tiddler='Library Tracker Settings' field='show_series' checked=true unchecked=false>Show Series</$checkbox><br>
+<$checkbox tiddler='Library Tracker Settings' field='show_genre' checked=true unchecked=false>Show Genre</$checkbox><br>
+<$checkbox tiddler='Library Tracker Settings' field='show_location' checked=true unchecked=false>Show Location</$checkbox><br>
+<$checkbox tiddler='Library Tracker Settings' field='show_tags' checked=true unchecked=false>Show Tags</$checkbox><br>
+
+!!Edit Author List
+<$set name=AuthorToRemove value={{Library Tracker Settings!!edit_author_list}}>
+<<thisRemoveAuthor>>
+</$set>
+
+!!Edit Series List
+<$set name=SeriesToRemove value={{Library Tracker Settings!!edit_series_list}}>
+<<thisRemoveSeries>>
+</$set>
+
+!!Edit Genre List
+<$set name=GenreToRemove value={{Library Tracker Settings!!edit_genre_list}}>
+<<thisRemoveGenre>>
+</$set>
+
+!!Edit Location List
+<$set name=LocationToRemove value={{Library Tracker Settings!!edit_location_list}}>
+<<thisRemoveLocation>>
+</$set>
+
+!!Edit Tag List
+<$set name=TagToRemove value={{Library Tracker Settings!!edit_tag_list}}>
+<<thisRemoveTag>>
+</$set>

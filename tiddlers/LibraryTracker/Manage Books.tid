@@ -1,0 +1,146 @@
+book_title: Foundation
+created: 20141227230045301
+modified: 20150202040126066
+title: Manage Books
+
+\define thisSeriesSelect()
+<$select tiddler={{!!book_title}} field='series' default='None'>
+<$list filter='[[$:/data/SeriesTitles]indexes[]sort[title]regexp:[(?i)$(thisSeriesSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+\define thisGenreSelect()
+<$select tiddler={{!!book_title}} field='genre' default='None'>
+<$list filter='[[$:/data/BookGenres]indexes[]sort[title]regexp:[(?i)$(thisGenreSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+\define thisAuthorSelect()
+<$select tiddler={{!!book_title}} field='author'>
+<$list filter='[[$:/data/BookAuthors]indexes[]sort[title]regexp:[(?i)$(thisAuthorSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+\define thisLocationSelect()
+<$select tiddler={{!!book_title}} field='location' default='None'>
+<$list filter='[[$:/data/BookLocations]indexes[]sort[title]regexp:[(?i)$(thisLocationSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+\define thisTagSelect()
+<$select tiddler='$:/state/booktag' field='selected_tag'>
+<$list filter='[[$:/data/BookTags]indexes[]sort[title]regexp:[(?i)$(thisTagSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+\define thisBookSelect()
+<$select field='book_title'>
+<$list filter='[tag[Book]sort[title]regexp:[(?i)$(thisBookSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+\define thisRemoveBookButton()
+<$button popup='$:/state/test'>Remove Book</$button>
+
+<$reveal type="popup" state="$:/state/test">
+<div class="tc-drop-down">
+
+{{DeleteBookConfirmation}}
+
+</div>
+</$reveal>
+\end
+
+Book: 
+<$set name=thisBookSearch value={{$:/state/newbook!!narrow_book_select}}>
+<<thisBookSelect>></$set> <$edit-text tiddler='$:/state/newbook' field='narrow_book_select' placeholder='Narrow Book List'/> (<<thisRemoveBookButton>>)
+<br>
+
+<!--Author-->
+<$reveal type=match text=true state='Library Tracker Settings!!show_author'>
+Author: <$reveal state='$:/state/Library Tracker/add author' type=nomatch text='new'>
+<$set name=thisAuthorSearch value={{$:/state/newbook!!narrow_author_select}}>
+<<thisAuthorSelect>></$set> <$edit-text tiddler='$:/state/newbook' field='narrow_author_select' placeholder='Narrow Author List'/> (<$button set='$:/state/Library Tracker/add author' setTo='new'>New Author</$button>)
+</$reveal>
+<$reveal state='$:/state/Library Tracker/add author' type=match text='new'>
+<$edit-text tiddler='$:/state/newbook' field='book_author' placeholder='Author'/><$button><$action-setfield $tiddler='$:/data/BookAuthors' $index={{$:/state/newbook!!book_author}} $value=1/><$action-setfield $tiddler='$:/state/newbook' $field='book_author' $value=''/>Add</$button><$button set='$:/state/Library Tracker/add author' setTo='notnew'>Done</$button>
+</$reveal><br>
+</$reveal>
+<!--End Author-->
+<!--Series-->
+<$reveal type=match text=true state='Library Tracker Settings!!show_series'>
+Series: <$reveal state='$:/state/Library Tracker/add series' type=nomatch text='new'>
+<$set name=thisSeriesSearch value={{$:/state/newbook!!narrow_series_select}}>
+<<thisSeriesSelect>></$set> <$edit-text tiddler='$:/state/newbook' field='narrow_series_select' placeholder='Narrow Series List'/>  (<$button set='$:/state/Library Tracker/add series' setTo='new'>New Series</$button>)
+</$reveal>
+<$reveal state='$:/state/Library Tracker/add series' type=match text='new'>
+<$edit-text tiddler='$:/state/newbook' field='book_series' placeholder='Series Title'/><$button><$action-setfield $tiddler='$:/data/SeriesTitles' $index={{$:/state/newbook!!book_series}} $value=1/><$action-setfield $tiddler='$:/state/newbook' $field='book_series' $value=''/>Add</$button><$button set='$:/state/Library Tracker/add series' setTo='notnew'>Done</$button>
+</$reveal><br>
+</$reveal>
+<!--End Series-->
+<!--Genre-->
+<$reveal type=match text=true state='Library Tracker Settings!!show_genre'>
+Genre: <$reveal state='$:/state/Library Tracker/add genre' type=nomatch text='new'>
+<$set name=thisGenreSearch value={{$:/state/newbook!!narrow_genre_select}}>
+<<thisGenreSelect>></$set> <$edit-text tiddler='$:/state/newbook' field='narrow_genre_select' placeholder='Narrow Genre List'/> (<$button set='$:/state/Library Tracker/add genre' setTo='new'>New Genre</$button>)
+</$reveal>
+<$reveal state='$:/state/Library Tracker/add genre' type=match text='new'>
+<$edit-text tiddler='$:/state/newbook' field='book_genre' placeholder='Genre'/><$button><$action-setfield $tiddler='$:/data/BookGenres' $index={{$:/state/newbook!!book_genre}} $value=1/><$action-setfield $tiddler='$:/state/newbook' $field='book_genre' $value=''/>Add</$button><$button set='$:/state/Library Tracker/add genre' setTo='notnew'>Done</$button>
+</$reveal><br>
+</$reveal>
+<!--End Genre-->
+<!--Location-->
+<$reveal type=match text=true state='Library Tracker Settings!!show_location'>
+Location: <$reveal state='$:/state/Library Tracker/add location' type=nomatch text='new'>
+<$set name=thisLocationSearch value={{$:/state/newbook!!narrow_location_select}}>
+<<thisLocationSelect>></$set> <$edit-text tiddler='$:/state/newbook' field='narrow_location_select' placeholder='Narrow Location List'/> (<$button set='$:/state/Library Tracker/add location' setTo='new'>New  Location</$button>)
+</$reveal>
+<$reveal state='$:/state/Library Tracker/add location' type=match text='new'>
+<$edit-text tiddler='$:/state/newbook' field='book_location' placeholder='Location'/><$button><$action-setfield $tiddler='$:/data/BookLocations' $index={{$:/state/newbook!!book_location}} $value=1/><$action-setfield $tiddler='$:/state/newbook' $field='book_location' $value=''/>Add</$button><$button set='$:/state/Library Tracker/add location' setTo='notnew'>Done</$button>
+</$reveal>
+</$reveal><br><br>
+<!--End Location-->
+
+<!--Tags-->
+<$reveal type=match text=true state='Library Tracker Settings!!show_tags'>
+Tags (it will always be tagged with `Book` by default):<br>
+<$reveal type=match state='$:/state/newbook!!add_or_create_tag' text='create'>
+New Tag: <$edit-text tiddler='$:/state/booktag' field='tag_temp' placeholder='New Tag'/>
+<$button>Create Tag
+<$action-setfield $tiddler='$:/data/BookTags' $index={{$:/state/booktag!!tag_temp}} $value=1/>
+<$action-setfield $tiddler='$:/state/booktag' $field='tag_temp' $value=''/>
+</$button>
+<$button set='$:/state/newbook!!add_or_create_tag' setTo='nocreate'>Done</$button><br>
+</$reveal>
+<$reveal type='nomatch' state='$:/state/newbook!!add_or_create_tag' text='create'>
+Tag to add: 
+<$set name=thisTagSearch value={{$:/state/newbook!!narrow_tag_select}}>
+<<thisTagSelect>>
+</$set>
+<$fieldmangler tiddler={{!!book_title}}>
+<$button>
+<$action-sendmessage $message='tm-add-tag' $param={{$:/state/booktag!!selected_tag}}/>Add Tag
+</$button>
+<$edit-text tiddler='$:/state/newbook' field='narrow_tag_select' placeholder='Narrow Tag List'/>
+(<$button set='$:/state/newbook!!add_or_create_tag' setTo='create'>New Tag</$button>)
+</$fieldmangler>
+<br>
+</$reveal>
+List of current tags:<br>
+<$fieldmangler tiddler={{!!book_title}}>
+<$list filter='[{!!book_title}tags[]]-Book'><$view field='title'/> <$button>Remove Tag<$action-sendmessage $message='tm-remove-tag' $param=<<currentTiddler>>/></$button><br> </$list>
+</$fieldmangler>
+</$reveal>
+<!--End Tags-->

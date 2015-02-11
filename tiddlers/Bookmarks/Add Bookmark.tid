@@ -1,0 +1,54 @@
+created: 20150108203716298
+creator: inmysocks
+modified: 20150208222912228
+modifier: inmysocks
+title: Add Bookmark
+
+\define thisTagSelect()
+<$select tiddler='$:/state/Bookmarks' field='selected_tag'>
+<$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]regexp:[(?i)$(tagSearch)$]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+\end
+
+URL: <$edit-text tiddler='$:/temp/Bookmarks/NewBookmark' field=url class='tc-edit-texteditor'/>
+Name: <$edit-text tiddler='$:/temp/Bookmarks/NewBookmark' field=name class='tc-edit-texteditor'/>
+Note: <$edit-text tiddler='$:/temp/Bookmarks/NewBookmark' field=note class='tc-edit-texteditor'/>
+Tags (it will always be tagged with `Bookmark` by default):<br>
+<$reveal type=match state='$:/state/Bookmarks!!add_or_create_tag' text='create'>
+New Tag: <$edit-text tiddler='$:/temp/Bookmarks' field='tag_temp' placeholder='New Tag'/>
+<$reveal type=nomatch state='$:/temp/Bookmarks!!tag_temp' text=''>
+<$button>Create Tag
+<$action-setfield $tiddler='$:/data/Bookmarks/BookmarkTags' $index={{$:/temp/Bookmarks!!tag_temp}} $value=1/>
+<$action-setfield $tiddler='$:/temp/Bookmarks' $field='tag_temp' $value=''/>
+</$button>
+</$reveal>
+<$reveal type=match state='$:/temp/Bookmarks!!tag_temp' text=''>
+<$button>Create Tag</$button>
+</$reveal>
+<$button set='$:/state/Bookmarks!!add_or_create_tag' setTo='nocreate'>Done</$button><br>
+</$reveal>
+<$reveal type='nomatch' state='$:/state/Bookmarks!!add_or_create_tag' text='create'>
+Tag to add: 
+<$set name=tagSearch value={{$:/temp/Bookmarks!!narrow_tag_select}}>
+<<thisTagSelect>>
+</$set>
+<$edit-text tiddler='$:/temp/Bookmarks' field='narrow_tag_select' placeholder='Narrow Tag List'/>
+<$fieldmangler tiddler='$:/temp/Bookmarks/NewBookmark'>
+<$button>
+<$action-setfield $tiddler='$:/temp/Bookmarks/NewBookmark' $field='dummy_field' value='1'/>
+<$action-sendmessage $message='tm-add-tag' $param={{$:/state/Bookmarks!!selected_tag}}/>Add Tag
+</$button>(<$button set='$:/state/Bookmarks!!add_or_create_tag' setTo='create'>New Tag</$button>)
+</$fieldmangler>
+<br>
+</$reveal>
+List of current tags:<br>
+<$fieldmangler tiddler='$:/temp/Bookmarks/NewBookmark'>
+<$list filter='[[$:/temp/Bookmarks/NewBookmark]tags[]]-[[Bookmark]]'><$view field='title'/> <$button>Remove Tag<$action-sendmessage $message='tm-remove-tag' $param=<<currentTiddler>>/></$button><br> </$list>
+</$fieldmangler>
+
+<$button>Add Bookmark
+<$action-setfield $tiddler='$:/temp/Bookmarks/NewBookmark' $field='title' $value={{$:/temp/Bookmarks/NewBookmark!!name}}/>
+<$action-setfield $tiddler='$:/temp/Bookmarks/NewBookmark' url='' name='' note='' tags='Bookmark'/>
+</$button>

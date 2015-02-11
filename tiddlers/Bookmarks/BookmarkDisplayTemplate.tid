@@ -1,0 +1,7 @@
+created: 20150108193706495
+creator: inmysocks
+modified: 20150122134753651
+modifier: inmysocks
+title: BookmarkDisplayTemplate
+
+<a href={{!!url}} target="_blank"><$view field=title/></a> - {{!!note}} (<$link to={{!!title}}>Open Tiddler</$link>)<br>

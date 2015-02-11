@@ -1,0 +1,8 @@
+tags: $:/tags/Macro
+title: Citations Macros
+
+\define monoSpacedCodeBlock(src)
+```
+$src$
+```
+\end

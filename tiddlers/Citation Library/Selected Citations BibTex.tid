@@ -1,0 +1,14 @@
+created: 20150211015009814
+modified: 20150211020128946
+tags: 
+title: Selected Citations BibTex
+
+<pre>
+<$list filter='[tag[Citations]on_list[true]]'>
+
+<$list filter='[{!!bibtex_tiddler}get[text]]'>
+<<currentTiddler>>
+</$list>
+
+</$list>
+</pre>

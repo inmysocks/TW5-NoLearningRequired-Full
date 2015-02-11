@@ -8,7 +8,7 @@ title: ContactsMacros
 
 \define contactSlider(buttonType)
 
-<$tiddler tiddler=$(tiddlerName)$>
+<$tiddler tiddler="""$(tiddlerName)$""">
 <$reveal type="nomatch" state="$:/state/$(tiddlerName)$" text="show">
 
 <$button set="$:/state/$(tiddlerName)$" setTo="show" class=$buttonType$>{{$:/core/images/right-arrow}}$(textstyle1)$$(tiddlerName)$$(textstyle1)$</$button> - {{$(tiddlerName)$!!blurb}}
