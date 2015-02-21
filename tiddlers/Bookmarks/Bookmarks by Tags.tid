@@ -1,32 +1,11 @@
+caption: Bookmarks Sorted by Tags
 created: 20150108204156293
 creator: inmysocks
 modified: 20150206021913795
 modifier: inmysocks
-title: Bookmarks by Tags
+title: $:/plugins/inmysocks/Bookmarks/Bookmarks by Tags
 
-Select tag to see all bookmarks with that tag:<br><$select tiddler='$:/state/Bookmarks/BookmarksByTags'>
-<option value=''>(Show All Tags)</option>
-<$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]sort[title]]'>
-<option value=<<currentTiddler>>><$view field='title'/></option>
-</$list>
-</$select> 
-<$reveal state='$:/state/Bookmarks/BookmarksByTags' type='nomatch' text=''>
-<$select tiddler='$:/state/Bookmarks/BookmarksByTags2'>
-<option value=''>(All Results)</option>
-<$list filter='[tag{$:/state/Bookmarks/BookmarksByTags}tags[]sort[title]]-[[Bookmark]]-[{$:/state/Bookmarks/BookmarksByTags}]'>
-<option value=<<currentTiddler>>><$view field='title'/></option>
-</$list>
-</$select>
-<$reveal state='$:/state/Bookmarks/BookmarksByTags2' type='nomatch' text=''>
-<$select tiddler='$:/state/Bookmarks/BookmarksByTags3'>
-<option value=''>(All Results)</option>
-<$list filter='[tag{$:/state/Bookmarks/BookmarksByTags}tag{$:/state/Bookmarks/BookmarksByTags2}tags[]sort[title]]-[[Bookmark]]-[{$:/state/Bookmarks/BookmarksByTags}]-[{$:/state/Bookmarks/BookmarksByTags2}]'>
-<option value=<<currentTiddler>>><$view field='title'/></option>
-</$list>
-</$select>
-</$reveal>
-</$reveal>
-
+\define thisBookmarksListByTag()
 <!--Tag(s) selected-->
 <$reveal type='nomatch' state='$:/state/Bookmarks/BookmarksByTags' text=''>
 <$set name=searchSelection value={{$:/state/Bookmarks/BookmarksByTags}}>
@@ -38,7 +17,7 @@ Select tag to see all bookmarks with that tag:<br><$select tiddler='$:/state/Boo
 
 <!--One tag selected-->
 <$reveal type='match' state='$:/state/Bookmarks/BookmarksByTags2' text=''>
-<$list filter='[tag<currentTiddler>tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate>
+<$list filter='[tag<currentTiddler>tag[Bookmark]sort[title]regexp[(?i)$(SearchString)$]]' template=BookmarkDisplayTemplate>
 </$list>
 </$reveal>
 <!--End one tag selected-->
@@ -46,7 +25,7 @@ Select tag to see all bookmarks with that tag:<br><$select tiddler='$:/state/Boo
 <!--Two tags selected-->
 <$reveal type='nomatch' state='$:/state/Bookmarks/BookmarksByTags2' text=''>
 <$reveal type='match' state='$:/state/Bookmarks/BookmarksByTags3' text=''>
-<$list filter='[tag<currentTiddler>tag<searchSelection2>tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate>
+<$list filter='[tag<currentTiddler>tag<searchSelection2>tag[Bookmark]sort[title]regexp[(?i)$(SearchString)$]]' template=BookmarkDisplayTemplate>
 </$list>
 </$reveal>
 </$reveal>
@@ -54,7 +33,7 @@ Select tag to see all bookmarks with that tag:<br><$select tiddler='$:/state/Boo
 
 <!--Three tags selected-->
 <$reveal type='nomatch' state='$:/state/Bookmarks/BookmarksByTags3' text=''>
-<$list filter='[tag<currentTiddler>tag<searchSelection2>tag<searchSelection3>tag[Bookmark]sort[title]]' template=BookmarkDisplayTemplate>
+<$list filter='[tag<currentTiddler>tag<searchSelection2>tag<searchSelection3>tag[Bookmark]sort[title]regexp[(?i)$(SearchString)$]]' template=BookmarkDisplayTemplate>
 </$list>
 </$reveal>
 <!--End three tags selected-->
@@ -80,3 +59,33 @@ Select tag to see all bookmarks with that tag:<br><$select tiddler='$:/state/Boo
 </$set>
 </$reveal>
 <!--End no tag selected-->
+\end
+
+Select tag to see all bookmarks with that tag:<br><$select tiddler='$:/state/Bookmarks/BookmarksByTags'>
+<option value=''>(Show All Tags)</option>
+<$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]sort[title]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select> 
+<$reveal state='$:/state/Bookmarks/BookmarksByTags' type='nomatch' text=''>
+<$select tiddler='$:/state/Bookmarks/BookmarksByTags2'>
+<option value=''>(All Results)</option>
+<$list filter='[tag[Bookmark]tag{$:/state/Bookmarks/BookmarksByTags}tags[]sort[title]]-[[Bookmark]]-[{$:/state/Bookmarks/BookmarksByTags}]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+<$reveal state='$:/state/Bookmarks/BookmarksByTags2' type='nomatch' text=''>
+<$select tiddler='$:/state/Bookmarks/BookmarksByTags3'>
+<option value=''>(All Results)</option>
+<$list filter='[tag[Bookmark]tag{$:/state/Bookmarks/BookmarksByTags}tag{$:/state/Bookmarks/BookmarksByTags2}tags[]sort[title]]-[[Bookmark]]-[{$:/state/Bookmarks/BookmarksByTags}]-[{$:/state/Bookmarks/BookmarksByTags2}]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+</$reveal>
+</$reveal>
+
+Search: <$edit-text tiddler='$:/state/Bookmarks/Search' field='search'/>
+
+<$set name='SearchString' value={{$:/state/Bookmarks/Search!!search}}>
+<<thisBookmarksListByTag>>
+</$set>

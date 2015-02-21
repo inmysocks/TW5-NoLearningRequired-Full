@@ -1,8 +1,9 @@
+caption: Add Bookmark
 created: 20150108203716298
 creator: inmysocks
 modified: 20150208222912228
 modifier: inmysocks
-title: Add Bookmark
+title: $:/plugins/inmysocks/Bookmarks/Add Bookmark
 
 \define thisTagSelect()
 <$select tiddler='$:/state/Bookmarks' field='selected_tag'>

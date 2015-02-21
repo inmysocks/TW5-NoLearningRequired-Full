@@ -2,10 +2,10 @@ caption: Settings
 created: 20150122135158588
 edit_tag_list: TiddlyWiki Plugins
 modified: 20150202224318213
-title: Bookmarks Settings
+title: $:/plugins/inmysocks/Bookmarks/Bookmarks Settings
 
 \define thisRemoveTag()
-Select Tag: <$select tiddler='Bookmarks Settings' field='edit_tag_list'>
+Select Tag: <$select tiddler='$:/plugins/inmysocks/Bookmarks/Bookmarks Settings' field='edit_tag_list'>
 <$list filter='[[$:/data/Bookmarks/BookmarkTags]indexes[]]'>
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>
@@ -15,6 +15,6 @@ Select Tag: <$select tiddler='Bookmarks Settings' field='edit_tag_list'>
 
 This is going to contain tools to remove tags from the potential bookmark tag list. This  should be exactly what is used in the library tracker, but it isn't working here. I am confused.
 
-<$set name=TagToRemove value={{Bookmarks Settings!!edit_tag_list}}>
+<$set name=TagToRemove value={{$:/plugins/inmysocks/Bookmarks/Bookmarks Settings!!edit_tag_list}}>
 <<thisRemoveTag>>
 </$set>
